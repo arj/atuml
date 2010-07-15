@@ -3,6 +3,7 @@
 
 #include <QApplication>
 #include <QSettings>
+#include <QVariant>
 
 class AtumlSettingsProvider
 {
@@ -15,6 +16,7 @@ public:
     static AtumlSettingsProvider& getInstance();
 
     int getInt(int id);
+    QVariant get(int id);
 
     /* Constants for requesting the correct value */
     static const int MaxUndoCount = 1000;
