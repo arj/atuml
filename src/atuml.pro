@@ -7,6 +7,8 @@ TARGET = atuml
 DEPENDPATH += .
 INCLUDEPATH += .
 
+RESOURCES += resources/atuml.qrc
+
 # Input
 HEADERS += atuml.h \
            atumlsettingsprovider.h \

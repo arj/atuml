@@ -6,9 +6,6 @@ int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
 
-	Atuml atuml;
-	atuml.run();
-
-	// return app.exec();
-    return 0;
+	Atuml atuml(app);
+	return atuml.run();
 }

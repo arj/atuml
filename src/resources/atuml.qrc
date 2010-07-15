@@ -1,0 +1,47 @@
+<RCC>
+  <qresource prefix="icons" >
+    <file>cursor.png</file>
+    <file>aggregation.png</file>
+    <file>composition.png</file>
+    <file>shape_move_back.png</file>
+    <file>shape_move_backwards.png</file>
+    <file>shape_move_forwards.png</file>
+    <file>shape_move_front.png</file>
+    <file>control_play_blue.png</file>
+    <file>control_fastforward_blue.png</file>
+    <file>help.png</file>
+    <file>table_add.png</file>
+    <file>table_delete.png</file>
+    <file>table_edit.png</file>
+    <file>book.png</file>
+    <file>book_open.png</file>
+    <file>sitemap_color.png</file>
+    <file>sitemap.png</file>
+    <file>zoom_in.png</file>
+    <file>zoom_out.png</file>
+    <file>shading.png</file>
+    <file>shape_align_bottom.png</file>
+    <file>shape_align_center.png</file>
+    <file>shape_align_left.png</file>
+    <file>shape_align_middle.png</file>
+    <file>shape_align_right.png</file>
+    <file>shape_align_top.png</file>
+    <file>shape_group.png</file>
+    <file>generalization.png</file>
+    <file>association.png</file>
+    <file>shape_ungroup.png</file>
+    <file>cut_red.png</file>
+    <file>cog.png</file>
+    <file>paste_plain.png</file>
+    <file>page_copy.png</file>
+    <file>arrow_undo.png</file>
+    <file>arrow_redo.png</file>
+    <file>page_white.png</file>
+    <file>folder.png</file>
+    <file>disk.png</file>
+  </qresource>
+  <qresource prefix="pictures" >
+    <file>atum.png</file>
+    <file>atuml.png</file>
+  </qresource>
+</RCC>
