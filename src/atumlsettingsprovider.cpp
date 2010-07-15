@@ -21,3 +21,15 @@ AtumlSettingsProvider& AtumlSettingsProvider::getInstance()
     static AtumlSettingsProvider instance;
     return instance;
 }
+
+int AtumlSettingsProvider::getInt(int id)
+{
+    QSettings settings; // TODO remove this from here
+    if (id == MaxUndoCount)
+    {
+        return settings.value("ui/MaxUndoCount", DefaultMaxUndoCount).toInt();
+    }
+
+    // TODO throw some exception? Errorhandling?
+    return 0;
+}

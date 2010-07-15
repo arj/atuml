@@ -22,7 +22,8 @@ int Atuml::run()
     /* Now show a splash screen during initialization of windows */
     splashscreen->show();
 
-    showMessage("Initialization");
+    int count = settingsProvider->getInt(AtumlSettingsProvider::MaxUndoCount);
+    showMessage(QString("Initialization %1").arg(count));
 
     UmlDiagram ud("Hallo");
     ud.setTitle("Hallo2");
