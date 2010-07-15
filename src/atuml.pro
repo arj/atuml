@@ -8,5 +8,10 @@ DEPENDPATH += .
 INCLUDEPATH += .
 
 # Input
-HEADERS += atuml.h atumlsettingsprovider.h
-SOURCES += atuml.cpp main.cpp atumlsettingsprovider.cpp
+HEADERS += atuml.h \
+           atumlsettingsprovider.h \
+           uml/umldiagram.h
+SOURCES += atuml.cpp \
+           main.cpp \
+           atumlsettingsprovider.cpp \
+           uml/umldiagram.cpp

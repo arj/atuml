@@ -1,7 +1,10 @@
 #include "atumlsettingsprovider.h"
 
+#include <iostream>
+
 AtumlSettingsProvider::AtumlSettingsProvider()
 {
+    std::cout << "AtumlSettingsProvider" << std::endl;
     QCoreApplication::setOrganizationName("Bitflipper");
     QCoreApplication::setOrganizationDomain("bitflipper.de");
     QCoreApplication::setApplicationName("Atuml");
@@ -9,6 +12,7 @@ AtumlSettingsProvider::AtumlSettingsProvider()
 
 AtumlSettingsProvider::~AtumlSettingsProvider()
 {
+    std::cout << "~AtumlSettingsProvider" << std::endl;
 }
 
 
