@@ -24,7 +24,7 @@ int Atuml::run()
 		splashscreen->show();
 	}
 
-    showMessage("Initialization %1");
+    showMessage("Initialization");
 
     // Do nothing at the moment
 

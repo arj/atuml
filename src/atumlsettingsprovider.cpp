@@ -31,6 +31,11 @@ bool AtumlSettingsProvider::getBool(int id)
     return get(id).toBool();
 }
 
+QStringList AtumlSettingsProvider::getStrings(int id)
+{
+	return get(id).toStringList();
+}
+
 QVariant AtumlSettingsProvider::get(int id)
 {
     QSettings settings; // TODO remove this from here?

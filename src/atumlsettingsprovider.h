@@ -4,6 +4,7 @@
 #include <QApplication>
 #include <QSettings>
 #include <QVariant>
+#include <QStringList>
 
 class AtumlSettingsProvider
 {
@@ -17,6 +18,7 @@ public:
 
     int getInt(int id);
     bool getBool(int id);
+    QStringList getStrings(int id);
     QVariant get(int id);
 
     /* Constants for requesting the correct value */
@@ -30,7 +32,7 @@ private:
 
     /* Default values */
     static const int DefaultMaxUndoCount = 9999;
-    static const bool DefaultShowSplashScreen = false;
+    static const bool DefaultShowSplashScreen = true;
 };
 
 #endif
