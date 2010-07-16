@@ -1,6 +1,5 @@
 #include "atuml.h"
 
-#include <iostream>
 #include "uml/umldiagram.h"
 
 Atuml::Atuml(QApplication &app) : application(app)
@@ -24,9 +23,6 @@ int Atuml::run()
 
     showMessage("Initialization");
 
-    UmlDiagram ud("Hallo");
-    ud.setTitle("Hallo2");
-    std::cout << qPrintable(ud.title()) << std::endl;
     // Do nothing at the moment
 
     return application.exec();

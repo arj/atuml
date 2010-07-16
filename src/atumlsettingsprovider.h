@@ -10,7 +10,7 @@ private:
     AtumlSettingsProvider(const AtumlSettingsProvider& cc);
 
 public:
-    ~AtumlSettingsProvider();
+    virtual ~AtumlSettingsProvider();
     static AtumlSettingsProvider& getInstance();
 };
 
