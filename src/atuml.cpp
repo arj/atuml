@@ -1,6 +1,5 @@
 #include "atuml.h"
 
-#include <iostream>
 #include "uml/umldiagram.h"
 
 Atuml::Atuml(QApplication &app) : application(app)
@@ -20,14 +19,13 @@ Atuml::~Atuml()
 int Atuml::run()
 {
     /* Now show a splash screen during initialization of windows */
-    splashscreen->show();
+	if (settingsProvider->getBool(AtumlSettingsProvider::ShowSplashScreen))
+	{
+		splashscreen->show();
+	}
 
-    int count = settingsProvider->getInt(AtumlSettingsProvider::MaxUndoCount);
-    showMessage(QString("Initialization %1").arg(count));
+    showMessage("Initialization %1");
 
-    UmlDiagram ud("Hallo");
-    ud.setTitle("Hallo2");
-    std::cout << qPrintable(ud.title()) << std::endl;
     // Do nothing at the moment
 
     return application.exec();
