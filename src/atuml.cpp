@@ -19,7 +19,10 @@ Atuml::~Atuml()
 int Atuml::run()
 {
     /* Now show a splash screen during initialization of windows */
-    splashscreen->show();
+	if (settingsProvider->getBool(AtumlSettingsProvider::ShowSplashScreen))
+	{
+		splashscreen->show();
+	}
 
     showMessage("Initialization");
 
