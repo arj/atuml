@@ -1,0 +1,2 @@
+#!/bin/bash
+qmake-qt4 -unix CONFIG+=debug_and_release -o Makefile atuml.pro
