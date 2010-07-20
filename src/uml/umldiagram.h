@@ -13,7 +13,6 @@ private:
 
 public:
     UmlDiagram(QString theTitle);
-
     QString title();
 
 public slots:
