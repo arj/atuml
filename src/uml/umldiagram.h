@@ -12,14 +12,9 @@ private:
     QString fTitle;
 
 public:
-    UmlDiagram(QString theTitle);
-    QString title();
-
-public slots:
-    void setTitle(QString theTitle);
-
-signals:
-    void titleChanged(QString newTitle);
+    UmlDiagram(QString theTitle) : fTitle(theTitle) {}
+    virtual QString title() const;
+    void setTitle(const QString &theTitle);
 };
 
 #endif

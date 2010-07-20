@@ -2,5 +2,7 @@
 
 QString ClassDiagramPrinter::print(const ClassDiagram &classdiagram)
 {
-	return QString();
+	QString str = QString("ClassDiagram {title: %1}").arg(classdiagram.title());
+
+	return str;
 }

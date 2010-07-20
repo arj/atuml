@@ -1,5 +1,5 @@
 #ifndef _CLASSGIAGRAM_H_
-#define _CLASSDIAGRAM_H_
+#define _CLASSGIAGRAM_H_
 
 #include "umldiagram.h"
 #include "class.h"
@@ -8,11 +8,11 @@
 class ClassDiagram : public UmlDiagram
 {
 public:
-	QString title();
-	ClassDiagram(QString title);
+	ClassDiagram(QString title) : UmlDiagram(title) {}
 
+	void addClass(Class *theclass);
 private:
-	QList<Class*> classes;
+	QList<Class*> fClasses;
 };
 
 #endif
