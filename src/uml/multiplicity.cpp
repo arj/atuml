@@ -9,3 +9,7 @@
  */
 
 #include "multiplicity.h"
+
+namespace uml {
+
+}

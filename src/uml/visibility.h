@@ -13,6 +13,8 @@
 
 #include <QString>
 
+namespace uml {
+
 class Visibility {
 public:
 	virtual QString string() = 0;
@@ -38,5 +40,7 @@ class Package : public Visibility {
 public:
 	virtual QString string();
 };
+
+}
 
 #endif /* _VISIBILITY_H_ */

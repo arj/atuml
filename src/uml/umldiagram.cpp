@@ -1,5 +1,7 @@
 #include "umldiagram.h"
 
+namespace uml {
+
 void UmlDiagram::setTitle(const QString &theTitle)
 {
     fTitle = theTitle;
@@ -8,4 +10,6 @@ void UmlDiagram::setTitle(const QString &theTitle)
 QString UmlDiagram::title() const
 {
     return fTitle;
+}
+
 }

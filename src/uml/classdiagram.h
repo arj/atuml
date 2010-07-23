@@ -5,6 +5,8 @@
 #include "class.h"
 #include <QList>
 
+namespace uml {
+
 class ClassDiagram : public UmlDiagram
 {
 public:
@@ -14,5 +16,7 @@ public:
 private:
 	QList<Class*> fClasses;
 };
+
+}
 
 #endif

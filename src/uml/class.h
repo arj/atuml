@@ -17,6 +17,8 @@
 #include "attribute.h"
 #include "method.h"
 
+namespace uml {
+
 class Class : public QObject
 {
     Q_OBJECT
@@ -45,5 +47,7 @@ private:
     QList<Attribute*> fAttributes;
     QList<Method*> fMethods;
 };
+
+}
 
 #endif

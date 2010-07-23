@@ -17,6 +17,8 @@
 #include "visibility.h"
 #include "parameter.h"
 
+namespace uml {
+
 class Method {
 public:
 	Method(const QString name);
@@ -29,5 +31,7 @@ private:
 	QString fReturnType;
 	QStringList fProperties;
 };
+
+}
 
 #endif /* _METHOD_H_ */

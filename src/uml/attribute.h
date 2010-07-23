@@ -17,6 +17,8 @@
 #include "visibility.h"
 #include "multiplicity.h"
 
+namespace uml {
+
 class Attribute {
 public:
 	Attribute(const QString name);
@@ -27,14 +29,15 @@ public:
 	void setType(const QString type);
 	void setMultiplicity(const Multiplicity multiplicity);
 	void setDefaultValue(const QVariant defaultValue);
-
-	// TODO missing set/get fProperties
+	void addProperty(const QString property);
+	void removeProperty(const QString property);
 
 	Visibility* visibility() const;
 	QString name() const;
 	QString type() const;
 	Multiplicity multiplicity() const;
 	QVariant defaultValue() const;
+	const QStringList properties() const;
 
 private:
 	Visibility* fVisibility;
@@ -44,5 +47,7 @@ private:
 	QVariant fDefaultValue;
 	QStringList fProperties;
 };
+
+}
 
 #endif /* _ATTRIBUTE_H_ */

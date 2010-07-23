@@ -9,3 +9,7 @@
  */
 
 #include "parameter.h"
+
+namespace uml {
+
+}

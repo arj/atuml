@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QString>
 
+namespace uml {
+
 class UmlDiagram : public QObject
 {
     Q_OBJECT
@@ -16,5 +18,7 @@ public:
     virtual QString title() const;
     void setTitle(const QString &theTitle);
 };
+
+}
 
 #endif

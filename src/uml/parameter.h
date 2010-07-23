@@ -16,6 +16,8 @@
 #include <QVariant>
 #include "multiplicity.h"
 
+namespace uml {
+
 class Parameter {
 public:
 	enum Direction {in, out, inout};
@@ -31,5 +33,7 @@ private:
 	QVariant fDefaultValue;
 	QStringList properties;
 };
+
+}
 
 #endif /* _PARAMETER_H_ */

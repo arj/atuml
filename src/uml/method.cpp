@@ -10,10 +10,14 @@
 
 #include "method.h"
 
+namespace uml {
+
 Method::Method(const QString name) : fName(name) {
 	fVisibility = new Public();
 }
 
 Method::~Method() {
 	// TODO Auto-generated constructor stub
+}
+
 }

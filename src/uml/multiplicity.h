@@ -11,6 +11,8 @@
 #ifndef _MULTIPLICITY_H_
 #define _MULTIPLICITY_H_
 
+namespace uml {
+
 class Multiplicity {
 public:
 	Multiplicity(int min=1, int max=1) : minimum(min), maximum(max) {}
@@ -18,5 +20,7 @@ public:
 	int minimum;
 	int maximum;
 };
+
+}
 
 #endif /* _MULTIPLICITY_H_ */

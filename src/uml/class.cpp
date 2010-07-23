@@ -1,5 +1,7 @@
 #include "class.h"
 
+namespace uml {
+
 void Class::addMethod(Method *method) {
 	if (!fMethods.contains(method)) {
 		fMethods.append(method);
@@ -50,4 +52,6 @@ QString Class::name() const {
 
 bool Class::active() const {
 	return fActive;
+}
+
 }

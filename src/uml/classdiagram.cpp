@@ -10,6 +10,10 @@
 
 #include "classdiagram.h"
 
+namespace uml {
+
 void ClassDiagram::addClass(Class *theclass) {
 	fClasses.append(theclass);
+}
+
 }

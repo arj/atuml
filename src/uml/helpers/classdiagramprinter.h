@@ -7,7 +7,7 @@
 class ClassDiagramPrinter
 {
 public:
-	static QString print(const ClassDiagram &classdiagram);
+	static QString print(const uml::ClassDiagram &classdiagram);
 };
 
 #endif

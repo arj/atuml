@@ -10,6 +10,8 @@
 
 #include "attribute.h"
 
+namespace uml {
+
 Attribute::Attribute(const QString name) :
 	fName(name) {
 
@@ -40,6 +42,16 @@ void Attribute::setDefaultValue(const QVariant defaultValue) {
 	fDefaultValue = defaultValue;
 }
 
+void Attribute::addProperty(const QString property) {
+	if (!fProperties.contains(property)) {
+		fProperties.append(property);
+	}
+}
+
+void Attribute::removeProperty(const QString property) {
+	fProperties.removeAll(property);
+}
+
 Visibility* Attribute::visibility() const {
 	return fVisibility;
 }
@@ -58,4 +70,10 @@ Multiplicity Attribute::multiplicity() const {
 
 QVariant Attribute::defaultValue() const {
 	return fDefaultValue;
+}
+
+const QStringList Attribute::properties() const {
+	return fProperties;
+}
+
 }

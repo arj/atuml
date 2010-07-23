@@ -10,6 +10,8 @@
 
 #include "visibility.h"
 
+namespace uml {
+
 QString Public::string()
 {
 	return "+";
@@ -28,4 +30,6 @@ QString Private::string()
 QString Package::string()
 {
 	return "~";
+}
+
 }
