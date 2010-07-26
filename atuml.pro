@@ -5,7 +5,9 @@ INCLUDEPATH += .
 RESOURCES += src/resources/atuml.qrc
 
 # Input
-HEADERS += src/uml/parameter.h \
+HEADERS += src/globals.h \
+    src/uml/exceptions.h \
+    src/uml/parameter.h \
     src/uml/method.h \
     src/uml/multiplicity.h \
     src/uml/attribute.h \
@@ -18,7 +20,8 @@ HEADERS += src/uml/parameter.h \
     src/atuml.h \
     src/atumlsettingsprovider.h \
     src/uml/umldiagram.h
-SOURCES += src/uml/parameter.cpp \
+SOURCES += src/uml/exceptions.cpp \
+    src/uml/parameter.cpp \
     src/uml/method.cpp \
     src/uml/multiplicity.cpp \
     src/uml/attribute.cpp \

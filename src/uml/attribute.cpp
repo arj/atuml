@@ -9,12 +9,19 @@
  */
 
 #include "attribute.h"
+#include <QApplication>
+#include "exceptions.h"
 
 namespace uml {
 
-Attribute::Attribute(const QString name) :
-	fName(name) {
+Attribute::Attribute(const QString name) {
 
+	if (name.isEmpty()) {
+		throw InvalidParameterException(qApp->translate("Exception",
+				"Attribute does not allow an empty name."));
+	}
+
+	fName = name;
 	fVisibility = new Public();
 }
 
@@ -23,10 +30,22 @@ Attribute::~Attribute() {
 }
 
 void Attribute::setVisibility(Visibility* visibility) {
+	if (visibility == 0) {
+		throw InvalidParameterException(qApp->translate("Exception",
+				"Parameter is null."));
+	}
+
+	// Destroy last value
+	delete fVisibility;
 	fVisibility = visibility;
 }
 
 void Attribute::setName(const QString name) {
+	if (name.isEmpty()) {
+		throw InvalidParameterException(qApp->translate("Exception",
+				"Attribute does not allow an empty name."));
+	}
+
 	fName = name;
 }
 
@@ -43,6 +62,11 @@ void Attribute::setDefaultValue(const QVariant defaultValue) {
 }
 
 void Attribute::addProperty(const QString property) {
+	if (property.isEmpty()) {
+		throw InvalidParameterException(qApp->translate("Exception",
+				"Attribute does not allow an empty property name to be added."));
+	}
+
 	if (!fProperties.contains(property)) {
 		fProperties.append(property);
 	}

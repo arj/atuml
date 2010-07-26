@@ -9,7 +9,11 @@
  */
 
 #include "multiplicity.h"
+#include "../globals.h"
 
 namespace uml {
+
+// Initialization of constant member.
+const quint32 Multiplicity::Infinity = QUINT32MAX;
 
 }

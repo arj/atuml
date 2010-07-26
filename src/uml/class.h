@@ -24,16 +24,16 @@ class Class : public QObject
     Q_OBJECT
 
 public:
-    Class(const QString name) : fName(name) {}
+    Class(const QString name);
 
-    void addMethod(Method *method);
-    void addAttribute(Attribute *attribute);
-    void removeMethod(Method *method);
-    void removeAttribute(Attribute *attribute);
-    const QList<Method*> methods() const;
-    const QList<Attribute*> attributes() const;
+    void addMethod(Method method);
+    void addAttribute(Attribute attribute);
+    void removeMethod(Method method);
+    void removeAttribute(Attribute attribute);
+    const QList<Method> methods() const;
+    const QList<Attribute> attributes() const;
 
-    void setName(const QString &name);
+    void setName(const QString name);
     void setAbstract(bool value);
     void setActive(bool value);
 
@@ -44,8 +44,8 @@ private:
     QString fName;
     bool fAbstract;
     bool fActive;
-    QList<Attribute*> fAttributes;
-    QList<Method*> fMethods;
+    QList<Attribute> fAttributes;
+    QList<Method> fMethods;
 };
 
 }

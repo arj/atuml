@@ -2,4 +2,14 @@ Simply execute
 
  $ qmake-qt4 && make && ./tests
 
-to run the tests.
+to run the tests. Available parameters are shown with
+
+ $ ./tests -h
+
+This does depend on your QTest library version.
+
+General goals
+---------------------
+
+- Easy to handle (but full/complex) functionality
+- Fast runtime

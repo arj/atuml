@@ -2,13 +2,13 @@
  * This file is part of the Atuml project.
  * http://www.bitflipper.de/atuml
  *
- * visibility.cpp
+ * exceptions.cpp
  *
- *  Created on: 20.07.2010
+ *  Created on: 23.07.2010
  *      Author: Robert Jakob
  */
 
-#include "visibility.h"
+#include "exceptions.h"
 
 /*
  * Just for completeness.

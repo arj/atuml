@@ -22,12 +22,22 @@ namespace uml {
 class Method {
 public:
 	Method(const QString name);
-	virtual ~Method();
+
+	/**
+	 * Comparison of Method objects is done by comparing
+	 * their name. This should be sufficient (inside classes!)
+	 */
+	bool operator==(const Method &other) const {
+		return this->fName == other.fName;
+	}
+
+	/* Getters */
+	QString name() const;
 
 private:
 	Visibility* fVisibility;
 	QString fName;
-	QList<Parameter*> fParameter;
+	QList<Parameter> fParameter;
 	QString fReturnType;
 	QStringList fProperties;
 };
