@@ -12,7 +12,7 @@ void test()
 	uml::Attribute attrib("MyAttrib");
 	attrib.setType("Test");
 
-	myclass.addAttribute(&attrib);
+	myclass.addAttribute(attrib);
 
 	cd.addClass(&myclass);
 
