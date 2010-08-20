@@ -8,3 +8,4 @@ qrc_*
 /Makefile*
 /.cproject
 /.project
+/docs
