@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>922</width>
+    <height>688</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Atuml</string>
+  </property>
+  <property name="locale">
+   <locale language="C" country="AnyCountry"/>
+  </property>
+  <property name="animated">
+   <bool>true</bool>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>6</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>5</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="AdvancedGraphicsView" name="graphicsView"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>922</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="separator"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionRecent_projects"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSave_as"/>
+    <addaction name="separator"/>
+    <addaction name="actionSettings"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="actionCut"/>
+    <addaction name="actionCopy"/>
+    <addaction name="actionPaste"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAbout_Qt"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <widget class="QMenu" name="menuZoom">
+     <property name="title">
+      <string>Zoom</string>
+     </property>
+     <addaction name="actionZoom_1_1"/>
+    </widget>
+    <addaction name="menuZoom"/>
+    <addaction name="actionToolbars"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QDockWidget" name="propertyWidget">
+   <property name="windowTitle">
+    <string>Properties</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Description</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="descriptionEdit"/>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="tableWidget">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectItems</enum>
+       </property>
+       <property name="showGrid">
+        <bool>true</bool>
+       </property>
+       <property name="gridStyle">
+        <enum>Qt::SolidLine</enum>
+       </property>
+       <attribute name="horizontalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <row>
+        <property name="text">
+         <string>Key</string>
+        </property>
+       </row>
+       <row>
+        <property name="text">
+         <string>Value</string>
+        </property>
+       </row>
+       <column>
+        <property name="text">
+         <string>Values</string>
+        </property>
+       </column>
+       <item row="0" column="0">
+        <property name="text">
+         <string>Visibility</string>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="1" column="0">
+        <property name="text">
+         <string>Public</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="standardToolBar">
+   <property name="windowTitle">
+    <string>Standard</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonIconOnly</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNew"/>
+   <addaction name="actionOpen"/>
+   <addaction name="actionSave"/>
+   <addaction name="separator"/>
+   <addaction name="actionUndo"/>
+   <addaction name="actionRedo"/>
+   <addaction name="separator"/>
+   <addaction name="actionCut"/>
+   <addaction name="actionCopy"/>
+   <addaction name="actionPaste"/>
+   <addaction name="separator"/>
+   <addaction name="actionZoom_in"/>
+   <addaction name="actionZoom_out"/>
+  </widget>
+  <widget class="QDockWidget" name="projectExplorerWidget">
+   <property name="windowIcon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/folder.png</normaloff>:/icons/folder.png</iconset>
+   </property>
+   <property name="floating">
+    <bool>false</bool>
+   </property>
+   <property name="features">
+    <set>QDockWidget::AllDockWidgetFeatures</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Project Explorer</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_5">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QTreeWidget" name="treeWidget">
+       <property name="headerHidden">
+        <bool>false</bool>
+       </property>
+       <column>
+        <property name="text">
+         <string>Titles</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Last modification</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="positionToolBar">
+   <property name="windowTitle">
+    <string>Positions</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonIconOnly</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAlign_left"/>
+   <addaction name="actionAlign_right"/>
+   <addaction name="actionAlign_top"/>
+   <addaction name="actionAlign_bottom"/>
+   <addaction name="actionAuto_align"/>
+   <addaction name="separator"/>
+   <addaction name="actionGroup"/>
+   <addaction name="actionUngroup"/>
+   <addaction name="separator"/>
+   <addaction name="actionMove_to_Front"/>
+   <addaction name="actionMove_to_Back"/>
+   <addaction name="actionMove_forward"/>
+   <addaction name="actionMove_backward"/>
+  </widget>
+  <widget class="QDockWidget" name="toolsWidget">
+   <property name="windowTitle">
+    <string>Tools</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QToolBox" name="toolBox">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="page">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>256</width>
+          <height>211</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Connections</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QRadioButton" name="rbNormal">
+           <property name="styleSheet">
+            <string>QRadioButton::indicator {
+	width: 0;
+	height: 0;
+}
+
+QRadioButton::checked {
+	background-color: rgb(255, 255, 127);
+}</string>
+           </property>
+           <property name="text">
+            <string>Normal</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../resources/atuml.qrc">
+             <normaloff>:/icons/cursor.png</normaloff>:/icons/cursor.png</iconset>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="rbAssoziation">
+           <property name="styleSheet">
+            <string>QRadioButton::indicator {
+	width: 0;
+	height: 0;
+}
+
+QRadioButton::checked {
+	background-color: rgb(255, 255, 127);
+}</string>
+           </property>
+           <property name="text">
+            <string>Assoziation</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../resources/atuml.qrc">
+             <normaloff>:/icons/association.png</normaloff>:/icons/association.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton">
+           <property name="styleSheet">
+            <string>QRadioButton::indicator {
+	width: 0;
+	height: 0;
+}
+
+QRadioButton::checked {
+	background-color: rgb(255, 255, 127);
+}</string>
+           </property>
+           <property name="text">
+            <string>Generalization</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../resources/atuml.qrc">
+             <normaloff>:/icons/generalization.png</normaloff>:/icons/generalization.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton_3">
+           <property name="styleSheet">
+            <string>QRadioButton::indicator {
+	width: 0;
+	height: 0;
+}
+
+QRadioButton::checked {
+	background-color: rgb(255, 255, 127);
+}</string>
+           </property>
+           <property name="text">
+            <string>Aggregation</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../resources/atuml.qrc">
+             <normaloff>:/icons/aggregation.png</normaloff>:/icons/aggregation.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton_4">
+           <property name="styleSheet">
+            <string>QRadioButton::indicator {
+	width: 0;
+	height: 0;
+}
+
+QRadioButton::checked {
+	background-color: rgb(255, 255, 127);
+}</string>
+           </property>
+           <property name="text">
+            <string>Composition</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../resources/atuml.qrc">
+             <normaloff>:/icons/composition.png</normaloff>:/icons/composition.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="page_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>256</width>
+          <height>211</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Page 2</string>
+        </attribute>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="transformationToolBar">
+   <property name="windowTitle">
+    <string>Transformation</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionTransform"/>
+   <addaction name="actionTransform_all"/>
+   <addaction name="separator"/>
+  </widget>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/disk.png</normaloff>:/icons/disk.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="toolTip">
+    <string>Save the current UML Document.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>&amp;Quit</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/folder.png</normaloff>:/icons/folder.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Open</string>
+   </property>
+  </action>
+  <action name="actionNew">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/page_white.png</normaloff>:/icons/page_white.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;New</string>
+   </property>
+   <property name="toolTip">
+    <string>Creates a new Atuml project.</string>
+   </property>
+  </action>
+  <action name="actionSave_as">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/disk.png</normaloff>:/icons/disk.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save as...</string>
+   </property>
+   <property name="toolTip">
+    <string>Saves the current project to the given filename.</string>
+   </property>
+  </action>
+  <action name="actionRecent_projects">
+   <property name="text">
+    <string>Recent projects</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/arrow_undo.png</normaloff>:/icons/arrow_undo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/arrow_redo.png</normaloff>:/icons/arrow_redo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionCut">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/cut_red.png</normaloff>:/icons/cut_red.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cut</string>
+   </property>
+  </action>
+  <action name="actionCopy">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/page_copy.png</normaloff>:/icons/page_copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/paste_plain.png</normaloff>:/icons/paste_plain.png</iconset>
+   </property>
+   <property name="text">
+    <string>Paste</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About...</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>About Qt...</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/cog.png</normaloff>:/icons/cog.png</iconset>
+   </property>
+   <property name="text">
+    <string>Settings...</string>
+   </property>
+  </action>
+  <action name="actionAlign_left">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/shape_align_left.png</normaloff>:/icons/shape_align_left.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align left</string>
+   </property>
+  </action>
+  <action name="actionAlign_right">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/shape_align_right.png</normaloff>:/icons/shape_align_right.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align right</string>
+   </property>
+  </action>
+  <action name="actionAlign_top">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/shape_align_top.png</normaloff>:/icons/shape_align_top.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align top</string>
+   </property>
+  </action>
+  <action name="actionAlign_bottom">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/shape_align_bottom.png</normaloff>:/icons/shape_align_bottom.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align bottom</string>
+   </property>
+  </action>
+  <action name="actionGroup">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/shape_group.png</normaloff>:/icons/shape_group.png</iconset>
+   </property>
+   <property name="text">
+    <string>Group</string>
+   </property>
+  </action>
+  <action name="actionUngroup">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/shape_ungroup.png</normaloff>:/icons/shape_ungroup.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ungroup</string>
+   </property>
+  </action>
+  <action name="actionAuto_align">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/shading.png</normaloff>:/icons/shading.png</iconset>
+   </property>
+   <property name="text">
+    <string>Auto align</string>
+   </property>
+   <property name="toolTip">
+    <string>Auto align tries to align all elements on the current.</string>
+   </property>
+  </action>
+  <action name="actionZoom_in">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/zoom_in.png</normaloff>:/icons/zoom_in.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom in</string>
+   </property>
+  </action>
+  <action name="actionZoom_out">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/zoom_out.png</normaloff>:/icons/zoom_out.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom out</string>
+   </property>
+  </action>
+  <action name="actionTransform">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/control_play_blue.png</normaloff>:/icons/control_play_blue.png</iconset>
+   </property>
+   <property name="text">
+    <string>Transform</string>
+   </property>
+   <property name="toolTip">
+    <string>Transforms current diagram</string>
+   </property>
+  </action>
+  <action name="actionTransform_all">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/control_fastforward_blue.png</normaloff>:/icons/control_fastforward_blue.png</iconset>
+   </property>
+   <property name="text">
+    <string>Transform all</string>
+   </property>
+   <property name="toolTip">
+    <string>Transforms current project</string>
+   </property>
+  </action>
+  <action name="actionMove_to_Front">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/shape_move_front.png</normaloff>:/icons/shape_move_front.png</iconset>
+   </property>
+   <property name="text">
+    <string>Move to front</string>
+   </property>
+   <property name="toolTip">
+    <string>Moves selected items to front.</string>
+   </property>
+  </action>
+  <action name="actionMove_to_Back">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/shape_move_back.png</normaloff>:/icons/shape_move_back.png</iconset>
+   </property>
+   <property name="text">
+    <string>Move to back</string>
+   </property>
+   <property name="toolTip">
+    <string>Moves selected items to back.</string>
+   </property>
+  </action>
+  <action name="actionMove_forward">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/shape_move_forwards.png</normaloff>:/icons/shape_move_forwards.png</iconset>
+   </property>
+   <property name="text">
+    <string>Move forward</string>
+   </property>
+   <property name="toolTip">
+    <string>Moves selected items forward.</string>
+   </property>
+  </action>
+  <action name="actionMove_backward">
+   <property name="icon">
+    <iconset resource="../resources/atuml.qrc">
+     <normaloff>:/icons/shape_move_backwards.png</normaloff>:/icons/shape_move_backwards.png</iconset>
+   </property>
+   <property name="text">
+    <string>Move backward</string>
+   </property>
+   <property name="toolTip">
+    <string>Moves selected items backward.</string>
+   </property>
+  </action>
+  <action name="action100">
+   <property name="text">
+    <string>100%</string>
+   </property>
+  </action>
+  <action name="actionZoom_1_1">
+   <property name="text">
+    <string>Zoom 1:1</string>
+   </property>
+   <property name="toolTip">
+    <string>Standard 1:1 zoom.</string>
+   </property>
+  </action>
+  <action name="actionToolbars">
+   <property name="text">
+    <string>Toolbars</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>AdvancedGraphicsView</class>
+   <extends>QGraphicsView</extends>
+   <header>src/ui/advancedgraphicsview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../resources/atuml.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -4,6 +4,7 @@
 #include <QApplication>
 #include <QtGui>
 #include "atumlsettingsprovider.h"
+#include "ui/mainwindow.h"
 
 class Atuml
 {
@@ -16,6 +17,7 @@ private:
     AtumlSettingsProvider *settingsProvider;
     QApplication &application;
     QSplashScreen *splashscreen;
+    MainWindow *mainwindow;
 
     void showMessage(QString string);
 };

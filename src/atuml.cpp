@@ -7,6 +7,8 @@ Atuml::Atuml(QApplication &app) : application(app)
     splashscreen = new QSplashScreen(QPixmap(":/pictures/atuml.png"));
 
     settingsProvider = &AtumlSettingsProvider::getInstance();
+
+    mainwindow = new MainWindow();
 }
 
 Atuml::~Atuml()
@@ -14,19 +16,23 @@ Atuml::~Atuml()
     /* settingsprovider need not be deleted as it is a
        singleton and is designed to delete itself. */
     delete splashscreen;
+
+    delete mainwindow;
 }
 
 int Atuml::run()
 {
-    /* Now show a splash screen during initialization of windows */
+	/* Now show a splash screen during initialization of windows */
 	if (settingsProvider->getBool(AtumlSettingsProvider::ShowSplashScreen))
 	{
 		splashscreen->show();
 	}
 
     showMessage("Initialization");
+    application.processEvents();
 
-    // Do nothing at the moment
+    mainwindow->showMaximized();
+    splashscreen->finish(mainwindow);
 
     return application.exec();
 }

@@ -23,9 +23,6 @@ int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
 
-	test();
-	return 0;
-
 	Atuml atuml(app);
 	return atuml.run();
 }
