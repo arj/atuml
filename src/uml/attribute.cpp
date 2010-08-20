@@ -11,6 +11,7 @@
 #include "attribute.h"
 #include <QApplication>
 #include "exceptions.h"
+#include "visibility.h"
 
 namespace uml {
 
@@ -23,6 +24,15 @@ Attribute::Attribute(const QString name) {
 
 	fName = name;
 	fVisibility = new Public();
+}
+
+Attribute::Attribute(const Attribute& copy) {
+	this->fVisibility = VisibilityFactory::createVisibility(copy.fVisibility->string());
+	this->fName = copy.fName;
+	this->fType = copy.fType;
+	this->fMultiplicity = copy.fMultiplicity;
+	this->fDefaultValue = copy.fDefaultValue;
+	this->fProperties = copy.fProperties;
 }
 
 Attribute::~Attribute() {

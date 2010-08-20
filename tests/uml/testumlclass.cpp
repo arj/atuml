@@ -87,7 +87,7 @@ void TestUmlClass::attributes() {
     // Adding a new attribute
 	c.addAttribute(Attribute("Test"));
 
-/*	QCOMPARE(c.attributes().at(0).name(), QString("Test"));
+	QCOMPARE(c.attributes().at(0).name(), QString("Test"));
 
 	// Adding the same again should not change anything
 	c.addAttribute(Attribute("Test"));
@@ -101,5 +101,5 @@ void TestUmlClass::attributes() {
 
 	// Removing an existing
 	c.removeAttribute(Attribute("Test"));
-	QCOMPARE(c.attributes().count(), 0);*/
+	QCOMPARE(c.attributes().count(), 0);
 }

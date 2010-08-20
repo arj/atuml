@@ -34,6 +34,12 @@ public:
 	Attribute(const QString name);
 
 	/**
+	 * Copy constructor.
+	 * Copies all the private referenced elements.
+	 */
+	Attribute(const Attribute& copy);
+
+	/**
 	 * Deconstructor which removes create variables.
 	 */
 	virtual ~Attribute();
@@ -81,7 +87,7 @@ public:
 
 	/**
 	 * Comparison of Attribute objects is done by comparing
-	 * their name. This should be sufficient (inside classes!)
+	 * their name. This should be sufficient (inside uml classes!)
 	 */
 	bool operator==(const Attribute &other) const {
 		return this->fName == other.fName;
