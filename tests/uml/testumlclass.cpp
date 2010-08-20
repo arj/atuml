@@ -10,6 +10,7 @@
 
 #include "testumlclass.h"
 #include "../src/uml/class.h"
+#include "../src/uml/attribute.h"
 #include "../src/uml/exceptions.h"
 
 using namespace uml;
@@ -59,6 +60,7 @@ void TestUmlClass::methods() {
 	Class c("TestClass");
 	QCOMPARE(c.methods().count(), 0);
 
+    // Adding a new method
 	c.addMethod(Method("Test"));
 	QCOMPARE(c.methods().count(), 1);
 	QCOMPARE(c.methods().at(0).name(), QString("Test"));
@@ -79,5 +81,25 @@ void TestUmlClass::methods() {
 }
 
 void TestUmlClass::attributes() {
+    Class c("TestClass");
+	QCOMPARE(c.attributes().count(), 0);
 
+    // Adding a new attribute
+	c.addAttribute(Attribute("Test"));
+
+/*	QCOMPARE(c.attributes().at(0).name(), QString("Test"));
+
+	// Adding the same again should not change anything
+	c.addAttribute(Attribute("Test"));
+	QCOMPARE(c.attributes().count(), 1);
+	QCOMPARE(c.attributes().at(0).name(), QString("Test"));
+
+	// Removing a not-existing
+	c.removeAttribute(Attribute("Test123"));
+	QCOMPARE(c.attributes().count(), 1);
+	QCOMPARE(c.attributes().at(0).name(), QString("Test"));
+
+	// Removing an existing
+	c.removeAttribute(Attribute("Test"));
+	QCOMPARE(c.attributes().count(), 0);*/
 }
