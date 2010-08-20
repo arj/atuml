@@ -1,6 +1,7 @@
 moc_*
 qrc_*
 *.o
+ui_*
 /setbuildenvironment
 /atuml
 /release/
