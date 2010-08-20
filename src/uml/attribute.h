@@ -21,15 +21,18 @@
 namespace uml {
 
 /**
- * Class representing an attribute (property) of a class.
+ * This class represents an attribute (property) of a uml class.
  * An attribute is described as follows:
  *   [Visibility] [/] name [: Type] [ multiplicity ] [= defaultValue] [{property*}]
  */
 class Attribute {
 public:
 	/**
-	 * Construct a new attribute with the name given.
+	 * Construct a new attribute with the given name.
 	 * Throws an InvalidParameterException if name is empty.
+	 *
+	 * @param name The name of the new attribute
+	 *
 	 */
 	Attribute(const QString name);
 
@@ -40,13 +43,14 @@ public:
 	Attribute(const Attribute& copy);
 
 	/**
-	 * Deconstructor which removes create variables.
+	 * Deconstructor
 	 */
 	virtual ~Attribute();
 
 	/**
 	 * Setter for visibility.
 	 * Throws InvalidParameterException if parameter is null.
+	 * @param visibility The new visibility to set.
 	 */
 	void setVisibility(Visibility* visibility);
 
@@ -93,20 +97,85 @@ public:
 		return this->fName == other.fName;
 	}
 
-	/* Getters */
+	/**
+	 * Returns the visibility of the attribute.
+	 *
+	 * @return The visibility.
+	 */
 	Visibility* visibility() const;
+
+	/**
+	 * Returns the name of the attribute.
+	 *
+	 * @return The name of the attribute.
+	 */
 	QString name() const;
+
+	/**
+	 * Returns the type of the attribute.
+	 *
+	 * @return The type of the attribute.
+	 */
 	QString type() const;
+
+	/**
+	 * Returns the multiplicity of the attribute.
+	 * A multiplicity of (1,6) means that the attribute can
+	 * have one to six occurences.
+	 *
+	 * @return Returns the multiplicity.
+	 */
 	Multiplicity multiplicity() const;
+
+	/**
+	 * Getter for the default value of the attribute.
+	 *
+	 * @return Returns a QVariant holding the default value.
+	 */
 	QVariant defaultValue() const;
+
+	/**
+	 * Getter for the list of properties.
+	 *
+	 * @return Returns a non-modifiable list of attribute properties.
+	 */
 	const QStringList properties() const;
 
 private:
+	/**
+	 * The visibility of the attribute.
+	 * As it is a pointer it must be initialized in the constructor(s).
+	 */
 	Visibility* fVisibility;
+
+	/**
+	 * Name of the class. Must not be empty!
+	 */
 	QString fName;
+
+	/**
+	 * Type of the attribute. Currently, this is represented as
+	 * a string, but maybe this should change to a specific C++ class as
+	 * uml classes can be type of an attribute, too.
+	 */
 	QString fType;
+
+	/**
+	 * The multiplicity of the attribute.
+	 */
 	Multiplicity fMultiplicity;
+
+	/**
+	 * The default value of the attribute.
+	 */
 	QVariant fDefaultValue;
+
+	/**
+	 * The list of properties of the attribute.
+	 * The following properties are defined in uml:
+	 * - ordered The data is returned ordered.
+	 * - read-only The attribute is read only.
+	 */
 	QStringList fProperties;
 };
 

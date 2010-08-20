@@ -20,6 +20,8 @@ namespace uml {
  * Class representing a integer interval in [0,Infinity).
  * Here, infinity is set to MAXQUINT32. If quint32 is changed,
  * change the casts in the test case accordingly!
+ *
+ * The value of the static infinity attribute is set in the .cpp file.
  */
 class Multiplicity {
 public:
@@ -93,7 +95,14 @@ public:
 	}
 
 private:
+	/**
+	 * The minimum value of the interval.
+	 */
 	quint32 fminimum;
+
+	/**
+	 * The maximum value of the interval.
+	 */
 	quint32 fmaximum;
 };
 

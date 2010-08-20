@@ -31,7 +31,7 @@ public:
 
 	/**
 	 * Constructs a new parameter with the given name and type.
-	 * Both are mandator, otherwise an exception is thrown.
+	 * Both are mandatory, otherwise an exception is thrown.
 	 */
 	Parameter(const QString name, const QString type);
 
@@ -83,20 +83,79 @@ public:
 		return this->fName == other.fName;
 	}
 
-	/* Getter */
+	/**
+	 * Getter for the parameter direction.
+	 *
+	 * @return Returns the direction of the parameter.
+	 */
 	Direction direction() const;
+
+	/**
+	 * Getter for the name of the parameter.
+	 *
+	 * @return Returns the name of the parameter.
+	 */
 	QString name() const;
+
+	/**
+	 * Getter for the type of the parameter.
+	 *
+	 * @return Returns the type of the parameter.
+	 */
 	QString type() const;
+
+	/**
+	 * Getter for the multiplicity of the parameter.
+	 *
+	 * @return Returns the multiplicity of the parameter.
+	 */
 	Multiplicity multiplicity() const;
+
+	/**
+	 * Getter for the default of the parameter.
+	 *
+	 * @return Returns the default of the parameter.
+	 */
 	QVariant defaultValue() const;
+
+	/**
+	 * Getter for the properties of the parameter.
+	 *
+	 * @return Returns a non-modifiable list of properties of the parameter.
+	 */
 	const QStringList properties() const;
 
 private:
+	/**
+	 * The direction of the parameter.
+	 */
 	Direction fDirection;
+
+	/**
+	 * The name of the parameter.
+	 */
 	QString fName;
+
+	/**
+	 * Type of the parameter. Currently, this is represented as
+	 * a string, but maybe this should change to a specific C++ class as
+	 * uml classes can be type of an parameter, too.
+	 */
 	QString fType;
+
+	/**
+	 * The multiplicity of the parameter.
+	 */
 	Multiplicity fMultiplicity;
+
+	/**
+	 * The default value of the parameter.
+	 */
 	QVariant fDefaultValue;
+
+	/**
+	 * The list of properties for the parameter.
+	 */
 	QStringList fProperties;
 };
 
