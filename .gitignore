@@ -1,4 +1,10 @@
 moc_*
+qrc_*
 *.o
+/setbuildenvironment
+/atuml
 /release/
 /debug/
+/Makefile*
+/.cproject
+/.project
