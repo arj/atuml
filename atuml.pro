@@ -6,7 +6,8 @@ RESOURCES += src/resources/atuml.qrc
 FORMS = src/ui/mainwindow.ui
 
 # Input
-HEADERS += src/ui/advancedgraphicsview.h \
+HEADERS += src/helpers/sleeperthread.h \
+    src/ui/advancedgraphicsview.h \
     src/ui/mainwindow.h \
     src/globals.h \
     src/uml/exceptions.h \

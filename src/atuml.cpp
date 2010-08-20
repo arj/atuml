@@ -1,6 +1,7 @@
 #include "atuml.h"
 
 #include "uml/umldiagram.h"
+#include "helpers/sleeperthread.h"
 
 Atuml::Atuml(QApplication &app) : application(app)
 {
@@ -30,6 +31,10 @@ int Atuml::run()
 
     showMessage("Initialization");
     application.processEvents();
+
+    // wait for 2 sec. One should see the splash screen ;)
+    // TODO Remove this for releases
+    SleeperThread::msleep(2000);
 
     mainwindow->showMaximized();
     splashscreen->finish(mainwindow);
