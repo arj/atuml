@@ -1,0 +1,3 @@
+- Have a look at different memory models.
+  Especially at setVisibility methods for attribute and method.
+  Should fVisibility be freed when deleting attribute instance?
