@@ -16,4 +16,8 @@ void ClassDiagram::addClass(Class *theclass) {
 	fClasses.append(theclass);
 }
 
+const QList<Class*> ClassDiagram::classes() const {
+    return fClasses;
+}
+
 }

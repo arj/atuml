@@ -15,6 +15,7 @@
 #include "uml/testumlvisibility.h"
 #include "uml/testumlparameter.h"
 #include "uml/testumlclass.h"
+#include "uml/testumlclassdiagram.h"
 
 // global arguments because QTest needs them for parameter parsing.
 int gargc;
@@ -50,6 +51,9 @@ void umlTests() {
 
 	TestUmlClass testumlclass;
 	runTest(&testumlclass);
+
+    TestUmlClassDiagram testumlclassdiagram;
+    runTest(&testumlclassdiagram);
 }
 
 int main(int argc, char *argv[]) {
