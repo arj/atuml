@@ -7,7 +7,8 @@ FORMS = src/ui/mainwindow.ui
 
 # QT += opengl
 # Input
-HEADERS += src/exceptions.h \
+HEADERS += src/ui/advancedgraphicsscene.h \
+    src/exceptions.h \
     src/globals.h \
     src/uml/classgraphicsitem.h \
     src/helpers/sleeperthread.h \
@@ -27,7 +28,8 @@ HEADERS += src/exceptions.h \
     src/atuml.h \
     src/atumlsettingsprovider.h \
     src/uml/umldiagram.h
-SOURCES += src/globals.cpp \
+SOURCES += src/ui/advancedgraphicsccene.cpp \
+    src/globals.cpp \
     src/exceptions.cpp \
     src/uml/classgraphicsitem.cpp \
     src/ui/advancedgraphicsview.cpp \

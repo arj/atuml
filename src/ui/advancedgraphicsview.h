@@ -25,11 +25,23 @@ public:
 	AdvancedGraphicsView(QWidget* parent = 0);
 
 	/**
+	 * Sets zoom factor to 1 (=100%).
+	 */
+	void zoom100();
+
+	/**
 	 * Sets the new zoom value for the view.
 	 *
 	 * @param zoom The new zoom value.
 	 */
 	void setZoom(qreal zoom);
+
+	/**
+	 * Sets zoom values in percentage.
+	 *
+	 * @param value The new zoom factor.
+	 */
+	void setZoomPercentage(unsigned int value);
 
 	/**
 	 * Getter for the current zoom value.

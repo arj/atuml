@@ -1,17 +1,18 @@
 #include "mainwindow.h"
+#include <QGraphicsEllipseItem>
+#include "advancedgraphicsscene.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
 	ui.setupUi(this);
 
-	scene = new QGraphicsScene(0,0,400,300);
+	scene = new AdvancedGraphicsScene(0,0,400,300);
 
 	ui.graphicsView->setScene(scene);
 
-	scene->addEllipse(10,10,200,200);
-
-	ui.graphicsView->setZoom(1.5);
+	QGraphicsEllipseItem* item = scene->addEllipse(10,10,200,200);
+	item->setFlag(QGraphicsItem::ItemIsMovable, true);
 }
 
 MainWindow::~MainWindow()

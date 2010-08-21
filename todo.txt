@@ -1,3 +1,13 @@
-- Have a look at different memory models.
+* Scene rectangle must grow if an item is moved outside.
+  Is this possible?
+
+* Draw nice background for scene (e.g. dots?)
+  See http://doc.trolltech.com/4.5/qgraphicsscene.html#drawBackground
+  --> Performance may be a problem?!
+
+Done:
+================================================================================
+
+* Have a look at different memory models.
   Especially at setVisibility methods for attribute and method.
   Should fVisibility be freed when deleting attribute instance?

@@ -10,7 +10,6 @@
 
 #include "advancedgraphicsview.h"
 #include "../globals.h"
-#include <QDebug>
 #include <cmath>
 
 // For OpenGL based rendering enable the following line and add opengl
@@ -39,11 +38,20 @@ void AdvancedGraphicsView::updateMatrix() {
 	this->setMatrix(matrix);
 }
 
+void AdvancedGraphicsView::zoom100() {
+	setZoom(1);
+}
+
 void AdvancedGraphicsView::setZoom(qreal zoom) {
+	// Normal float equality comparison
 	if (fabs(this->zoomFactor - zoom) > atuml::globals::epsilon) {
 		this->zoomFactor = zoom;
 		updateMatrix();
 	}
+}
+
+void AdvancedGraphicsView::setZoomPercentage(unsigned int value) {
+	setZoom(value / 100.0);
 }
 
 qreal AdvancedGraphicsView::zoom() const {
@@ -51,7 +59,8 @@ qreal AdvancedGraphicsView::zoom() const {
 }
 
 void AdvancedGraphicsView::wheelEvent(QWheelEvent* event) {
-	static qreal normalZoomFactor = 1.2;
+	// As suggested by http://doc.trolltech.com/4.5/qwheelevent.html#delta
+	static qreal normalZoomFactor = 1.125;
 
 	qreal numDegrees = event->delta() / 8.0;
 	qreal numSteps = numDegrees / 15.0;
