@@ -24,7 +24,8 @@ HEADERS += uml/testumlmethod.h \
     ../src/uml/method.h \
     ../src/uml/classdiagram.h \
     ../src/uml/umldiagram.h
-SOURCES += uml/testumlmethod.cpp \
+SOURCES += ../src/globals.cpp \
+    uml/testumlmethod.cpp \
     uml/testumlclassdiagram.cpp \
     uml/testumlclass.cpp \
     uml/testumlparameter.cpp \

@@ -12,6 +12,7 @@
 #define _GLOBALS_H_
 
 #include <limits>
+#include <QtGlobal>
 
 #define QINT8MIN std::numeric_limits<qint8>::min()
 #define QINT8MAX std::numeric_limits<qint8>::max()
@@ -23,5 +24,15 @@
 #define QINT32MIN std::numeric_limits<qint32>::min()
 #define QINT32MAX std::numeric_limits<qint32>::max()
 #define QUINT32MAX std::numeric_limits<qint32>::max()
+
+namespace atuml {
+
+namespace globals {
+
+const qreal epsilon = 0.000001;
+
+}
+
+}
 
 #endif /* _GLOBALS_H_ */

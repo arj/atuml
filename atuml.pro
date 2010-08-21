@@ -5,6 +5,7 @@ INCLUDEPATH += .
 RESOURCES += src/resources/atuml.qrc
 FORMS = src/ui/mainwindow.ui
 
+# QT += opengl
 # Input
 HEADERS += src/exceptions.h \
     src/globals.h \
@@ -26,8 +27,8 @@ HEADERS += src/exceptions.h \
     src/atuml.h \
     src/atumlsettingsprovider.h \
     src/uml/umldiagram.h
-
-SOURCES += src/exceptions.cpp \
+SOURCES += src/globals.cpp \
+    src/exceptions.cpp \
     src/uml/classgraphicsitem.cpp \
     src/ui/advancedgraphicsview.cpp \
     src/ui/mainwindow.cpp \
