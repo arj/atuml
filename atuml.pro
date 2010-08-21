@@ -3,9 +3,15 @@ TARGET = atuml
 DEPENDPATH += .
 INCLUDEPATH += .
 RESOURCES += src/resources/atuml.qrc
+FORMS = src/ui/mainwindow.ui
 
 # Input
 HEADERS += src/exceptions.h \
+    src/globals.h \
+    src/uml/classgraphicsitem.h \
+    src/helpers/sleeperthread.h \
+    src/ui/advancedgraphicsview.h \
+    src/ui/mainwindow.h \
     src/globals.h \
     src/uml/parameter.h \
     src/uml/method.h \
@@ -20,7 +26,11 @@ HEADERS += src/exceptions.h \
     src/atuml.h \
     src/atumlsettingsprovider.h \
     src/uml/umldiagram.h
+
 SOURCES += src/exceptions.cpp \
+    src/uml/classgraphicsitem.cpp \
+    src/ui/advancedgraphicsview.cpp \
+    src/ui/mainwindow.cpp \
     src/uml/parameter.cpp \
     src/uml/method.cpp \
     src/uml/multiplicity.cpp \

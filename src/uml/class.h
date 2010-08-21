@@ -38,6 +38,11 @@ public:
 	Class(const QString name);
 
 	/**
+	 * Virtual class destructor for subclasses.
+	 */
+	virtual ~Class();
+
+	/**
 	 * Adds a new method to the class.
 	 * The method must not exist in the list before. If the method exists,
 	 * nothing happens. The comparison is based on a comparison of the

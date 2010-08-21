@@ -7,6 +7,10 @@ Class::Class(const QString name) : fAbstract(false), fActive(false) {
 	setName(name);
 }
 
+Class::~Class() {
+	qDebug() << "~Class";
+}
+
 void Class::addMethod(Method method) {
 	if (!fMethods.contains(method)) {
 		fMethods.append(method);
