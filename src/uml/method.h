@@ -119,6 +119,8 @@ public:
 
 	/**
 	 * Getter for the visibility.
+	 * Note that the pointer remains valid only as long as the
+	 * visibility is not modified.
 	 *
 	 * @return Returns a const visibility.
 	 */

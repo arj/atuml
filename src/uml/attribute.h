@@ -99,10 +99,12 @@ public:
 
 	/**
 	 * Returns the visibility of the attribute.
+	 * Note that the pointer remains valid only as long as the
+	 * visibility is not modified.
 	 *
 	 * @return The visibility.
 	 */
-	Visibility* visibility() const;
+	const Visibility* visibility() const;
 
 	/**
 	 * Returns the name of the attribute.

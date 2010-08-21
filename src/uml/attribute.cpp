@@ -85,8 +85,8 @@ void Attribute::removeProperty(const QString property) {
 	fProperties.removeAll(property);
 }
 
-Visibility* Attribute::visibility() const {
-	return VisibilityFactory::createVisibility(fVisibility->string());;
+const Visibility* Attribute::visibility() const {
+	return fVisibility;
 }
 
 QString Attribute::name() const {
