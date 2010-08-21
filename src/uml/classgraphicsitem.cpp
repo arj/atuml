@@ -19,7 +19,6 @@ ClassGraphicsItem::ClassGraphicsItem(const QString name, QGraphicsItem* parent) 
 }
 
 ClassGraphicsItem::~ClassGraphicsItem() {
-	qDebug() << "~ClassGraphicsItem";
 }
 
 }

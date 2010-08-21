@@ -8,7 +8,6 @@ Class::Class(const QString name) : fAbstract(false), fActive(false) {
 }
 
 Class::~Class() {
-	qDebug() << "~Class";
 }
 
 void Class::addMethod(Method method) {
