@@ -1,5 +1,5 @@
 #include "class.h"
-#include "exceptions.h"
+#include "../exceptions.h"
 
 namespace uml {
 
@@ -37,7 +37,7 @@ const QList<Attribute> Class::attributes() const {
 
 void Class::setName(const QString name) {
 	if (name.isEmpty()) {
-		throw InvalidParameterException(qApp->translate("Exception",
+		throw atuml::InvalidParameterException(qApp->translate("Exception",
 				"Class does not allow an empty name."));
 	}
 

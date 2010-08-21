@@ -16,6 +16,6 @@
  * are small and everything is implemented inline.
  */
 
-namespace uml {
+namespace atuml {
 
 }

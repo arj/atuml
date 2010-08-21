@@ -12,7 +12,7 @@
 #define _MULTIPLICITY_H_
 
 #include <QApplication>
-#include "exceptions.h"
+#include "../exceptions.h"
 
 namespace uml {
 
@@ -86,7 +86,7 @@ public:
 	 */
 	void set(quint32 minimum, quint32 maximum) {
 		if (minimum > maximum) {
-			throw InvalidParameterException(qApp->translate("Exception",
+			throw atuml::InvalidParameterException(qApp->translate("Exception",
 					"Minimum must be smaller or equal than maximum."));
 		}
 

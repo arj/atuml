@@ -10,7 +10,7 @@
 
 #include "attribute.h"
 #include <QApplication>
-#include "exceptions.h"
+#include "../exceptions.h"
 #include "visibility.h"
 
 namespace uml {
@@ -18,7 +18,7 @@ namespace uml {
 Attribute::Attribute(const QString name) {
 
 	if (name.isEmpty()) {
-		throw InvalidParameterException(qApp->translate("Exception",
+		throw atuml::InvalidParameterException(qApp->translate("Exception",
 				"Attribute does not allow an empty name."));
 	}
 
@@ -41,18 +41,17 @@ Attribute::~Attribute() {
 
 void Attribute::setVisibility(Visibility* visibility) {
 	if (visibility == 0) {
-		throw InvalidParameterException(qApp->translate("Exception",
+		throw atuml::InvalidParameterException(qApp->translate("Exception",
 				"Parameter is null."));
 	}
 
-	// Destroy last value
 	delete fVisibility;
-	fVisibility = visibility;
+	fVisibility = VisibilityFactory::createVisibility(visibility->string());
 }
 
 void Attribute::setName(const QString name) {
 	if (name.isEmpty()) {
-		throw InvalidParameterException(qApp->translate("Exception",
+		throw atuml::InvalidParameterException(qApp->translate("Exception",
 				"Attribute does not allow an empty name."));
 	}
 
@@ -73,7 +72,7 @@ void Attribute::setDefaultValue(const QVariant defaultValue) {
 
 void Attribute::addProperty(const QString property) {
 	if (property.isEmpty()) {
-		throw InvalidParameterException(qApp->translate("Exception",
+		throw atuml::InvalidParameterException(qApp->translate("Exception",
 				"Attribute does not allow an empty property name to be added."));
 	}
 
@@ -87,7 +86,7 @@ void Attribute::removeProperty(const QString property) {
 }
 
 Visibility* Attribute::visibility() const {
-	return fVisibility;
+	return VisibilityFactory::createVisibility(fVisibility->string());;
 }
 
 QString Attribute::name() const {

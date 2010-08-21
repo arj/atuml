@@ -13,7 +13,7 @@
 
 #include <QString>
 #include <QApplication>
-#include "exceptions.h"
+#include "../exceptions.h"
 
 namespace uml {
 
@@ -25,7 +25,7 @@ public:
 	/**
 	 * Give a string representation of the visibility class.
 	 */
-	virtual QString string() = 0;
+	virtual QString string() const = 0;
 };
 
 /**
@@ -33,7 +33,7 @@ public:
  */
 class Public : public Visibility {
 public:
-	virtual QString string() { return "+"; }
+	virtual QString string() const { return "+"; }
 };
 
 /**
@@ -41,7 +41,7 @@ public:
  */
 class Protected : public Visibility {
 public:
-	virtual QString string()  { return "#"; }
+	virtual QString string() const { return "#"; }
 };
 
 /**
@@ -49,7 +49,7 @@ public:
  */
 class Private : public Visibility {
 public:
-	virtual QString string()  { return "-"; }
+	virtual QString string() const { return "-"; }
 };
 
 /**
@@ -57,7 +57,7 @@ public:
  */
 class Package : public Visibility {
 public:
-	virtual QString string()  { return "~"; }
+	virtual QString string() const { return "~"; }
 };
 
 /**
@@ -90,7 +90,7 @@ public:
 		}
 
 		QString msg = QString("Unknown parameter for visibility construction \"%1\"").arg(code);
-		throw InvalidParameterException(qApp->translate("Exception", qPrintable(msg)));
+		throw atuml::InvalidParameterException(qApp->translate("Exception", qPrintable(msg)));
 	}
 };
 

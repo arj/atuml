@@ -10,9 +10,10 @@
 
 #include "testumlattribute.h"
 #include "../src/uml/attribute.h"
-#include "../src/uml/exceptions.h"
+#include "../src/exceptions.h"
 
 using namespace uml;
+using namespace atuml;
 
 void TestUmlAttribute::constructor() {
 	Attribute attrib("test");
@@ -71,10 +72,10 @@ void TestUmlAttribute::multiplicity() {
 void TestUmlAttribute::visibility() {
 	Attribute attrib("Empty");
 	// default visibility has to be public
-	QVERIFY(dynamic_cast<Public*>(attrib.visibility()));
+	QVERIFY(dynamic_cast<const Public*>(attrib.visibility()));
 
 	attrib.setVisibility(new Protected());
-	QVERIFY(dynamic_cast<Protected*>(attrib.visibility()));
+	QVERIFY(dynamic_cast<const Protected*>(attrib.visibility()));
 
 	try {
 		attrib.setVisibility(0);
@@ -118,4 +119,12 @@ void TestUmlAttribute::properties() {
 	// Removing an item.
 	attrib.removeProperty("Testproperty");
 	QCOMPARE(attrib.properties().count(), 0);
+
+	// Adding an empty item
+	try {
+		attrib.addProperty("");
+		QFAIL("Should have thrown an exception!");
+	} catch (InvalidParameterException) {
+		// Everything is fine.
+	}
 }

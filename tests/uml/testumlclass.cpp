@@ -11,9 +11,10 @@
 #include "testumlclass.h"
 #include "../src/uml/class.h"
 #include "../src/uml/attribute.h"
-#include "../src/uml/exceptions.h"
+#include "../src/exceptions.h"
 
 using namespace uml;
+using namespace atuml;
 
 void TestUmlClass::constructor() {
 	Class c("TestClass");

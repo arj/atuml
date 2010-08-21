@@ -8,7 +8,8 @@ DEPENDPATH += .
 INCLUDEPATH += .
 
 # Input
-HEADERS += uml/testumlclassdiagram.h \
+HEADERS += uml/testumlmethod.h \
+    uml/testumlclassdiagram.h \
     uml/testumlclass.h \
     uml/testumlparameter.h \
     uml/testumlvisibility.h \
@@ -19,11 +20,12 @@ HEADERS += uml/testumlclassdiagram.h \
     ../src/uml/attribute.h \
     ../src/uml/visibility.h \
     ../src/uml/multiplicity.h \
-    ../src/uml/exceptions.h \
+    ../src/exceptions.h \
     ../src/uml/method.h \
     ../src/uml/classdiagram.h \
     ../src/uml/umldiagram.h
-SOURCES += uml/testumlclassdiagram.cpp \
+SOURCES += uml/testumlmethod.cpp \
+    uml/testumlclassdiagram.cpp \
     uml/testumlclass.cpp \
     uml/testumlparameter.cpp \
     uml/testumlvisibility.cpp \

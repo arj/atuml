@@ -9,7 +9,7 @@
  */
 
 #include "parameter.h"
-#include "exceptions.h"
+#include "../exceptions.h"
 
 namespace uml {
 
@@ -21,13 +21,17 @@ Parameter::Parameter(const QString name, const QString type) {
 	fDirection = in;
 }
 
+bool Parameter::operator==(const Parameter &other) const {
+	return this->fName == other.fName;
+}
+
 void Parameter::setDirection(Direction direction) {
 	fDirection = direction;
 }
 
 void Parameter::setName(const QString name) {
 	if (name.isEmpty()) {
-		throw InvalidParameterException(qApp->translate("Exception",
+		throw atuml::InvalidParameterException(qApp->translate("Exception",
 				"Parameter does not allow an empty name."));
 	}
 	fName = name;
@@ -35,7 +39,7 @@ void Parameter::setName(const QString name) {
 
 void Parameter::setType(const QString type) {
 	if (type.isEmpty()) {
-		throw InvalidParameterException(qApp->translate("Exception",
+		throw atuml::InvalidParameterException(qApp->translate("Exception",
 				"Parameter does not allow an empty type."));
 	}
 
@@ -52,7 +56,7 @@ void Parameter::setDefaultValue(const QVariant defaultValue) {
 
 void Parameter::addProperty(const QString property) {
 	if (property.isEmpty()) {
-		throw InvalidParameterException(qApp->translate("Exception",
+		throw atuml::InvalidParameterException(qApp->translate("Exception",
 				"Parameter does not allow an empty property name to be added."));
 	}
 

@@ -11,7 +11,6 @@
 #include "testumlclassdiagram.h"
 #include "../src/uml/classdiagram.h"
 #include "../src/uml/class.h"
-#include "../src/uml/exceptions.h"
 
 using namespace uml;
 

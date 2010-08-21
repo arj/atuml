@@ -36,6 +36,15 @@ public:
 	Parameter(const QString name, const QString type);
 
 	/**
+	 * Comparison of Parameter objects is done by comparing
+	 * their name. This should be sufficient (inside methods!)
+	 *
+	 * @param other The parameter which is compared to the current.
+	 * @return Returns true of the names are equal.
+	 */
+	bool operator==(const Parameter &other) const;
+
+	/**
 	 * Setter for direction.
 	 */
 	void setDirection(Direction direction);
@@ -74,14 +83,6 @@ public:
 	 * Removes given property if it exists.
 	 */
 	void removeProperty(const QString property);
-
-	/**
-	 * Comparison of Parameter objects is done by comparing
-	 * their name. This should be sufficient (inside methods!)
-	 */
-	bool operator==(const Parameter &other) const {
-		return this->fName == other.fName;
-	}
 
 	/**
 	 * Getter for the parameter direction.

@@ -1,13 +1,13 @@
 #include <QApplication>
 
 #include "atuml.h"
-
+#include "uml/method.h"
 #include "uml/classdiagram.h"
 #include "uml/helpers/classdiagramprinter.h"
 
 void test()
 {
-	uml::ClassDiagram cd("Diagram1");
+	/*uml::ClassDiagram cd("Diagram1");
 	uml::Class myclass("MyClass");
 	uml::Attribute attrib("MyAttrib");
 	attrib.setType("Test");
@@ -16,7 +16,7 @@ void test()
 
 	cd.addClass(&myclass);
 
-	qDebug() << ClassDiagramPrinter::print(cd);
+	qDebug() << ClassDiagramPrinter::print(cd);*/
 }
 
 int main(int argc, char *argv[])

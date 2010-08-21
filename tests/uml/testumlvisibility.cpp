@@ -10,9 +10,10 @@
 
 #include "testumlvisibility.h"
 #include "../src/uml/visibility.h"
-#include "../src/uml/exceptions.h"
+#include "../src/exceptions.h"
 
 using namespace uml;
+using namespace atuml;
 
 void TestUmlVisibility::constructor() {
 	// No exception must occur.
