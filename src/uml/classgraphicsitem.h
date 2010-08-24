@@ -12,6 +12,9 @@
 #define _CLASSGRAPHICSITEM_H_
 
 #include <QGraphicsItem>
+#include <QPainter>
+#include <QStyleOptionGraphicsItem>
+#include <QWidget>
 #include "class.h"
 
 namespace uml {
@@ -23,12 +26,13 @@ public:
 	ClassGraphicsItem(const QString name, QGraphicsItem* parent = 0);
 	virtual ~ClassGraphicsItem();
 
-	virtual QRectF boundingRect() const {
-		return QRectF();
-	}
+	virtual QRectF boundingRect() const;
 
-	virtual void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) {
-	}
+	virtual void paint(QPainter* painter, const QStyleOptionGraphicsItem* options, QWidget*);
+
+private:
+	QRectF myRect;
+
 };
 
 }

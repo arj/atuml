@@ -13,8 +13,12 @@
 
 #include <QGraphicsView>
 #include <QWheelEvent>
+#include <QMouseEvent>
 
-class AdvancedGraphicsView : public QGraphicsView {
+class AdvancedGraphicsView: public QGraphicsView {
+
+Q_OBJECT
+
 public:
 
 	/**
@@ -50,6 +54,9 @@ public:
 	 */
 	qreal zoom() const;
 
+signals:
+	void mousePositionChanged(const QPointF pos);
+
 protected:
 
 	/**
@@ -65,6 +72,7 @@ protected:
 	 */
 	virtual void wheelEvent(QWheelEvent* event);
 
+	virtual void mouseMoveEvent(QMouseEvent* e);
 private:
 
 	/**

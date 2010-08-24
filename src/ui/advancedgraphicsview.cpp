@@ -11,6 +11,8 @@
 #include "advancedgraphicsview.h"
 #include "../globals.h"
 #include <cmath>
+#include <QPoint>
+#include <QDebug>
 
 // For OpenGL based rendering enable the following line and add opengl
 // to QT variable in the project file
@@ -27,6 +29,9 @@ AdvancedGraphicsView::AdvancedGraphicsView(QWidget* parent) :
 	// this->setViewport(new QGLWidget(QGLFormat(QGL::SampleBuffers)));
 
 	zoomFactor = 1;
+
+	// Mouse move events should occur without any button pressed
+	setMouseTracking(true);
 }
 
 void AdvancedGraphicsView::updateMatrix() {
@@ -76,4 +81,11 @@ void AdvancedGraphicsView::wheelEvent(QWheelEvent* event) {
 	setZoom(zoom() * factor);
 
 	event->accept();
+}
+
+void AdvancedGraphicsView::mouseMoveEvent(QMouseEvent* e) {
+	QPoint mousePos = e->pos();
+	QPointF scenePos = mapToScene(mousePos);
+
+	emit mousePositionChanged(scenePos);
 }

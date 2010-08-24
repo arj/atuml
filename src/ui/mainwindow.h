@@ -3,6 +3,7 @@
 
 #include <QtGui/QMainWindow>
 #include "ui_mainwindow.h"
+#include "advancedgraphicsscene.h"
 
 class MainWindow : public QMainWindow
 {
@@ -15,7 +16,10 @@ public:
 private:
     Ui::MainWindow ui;
 
-    QGraphicsScene* scene;
+    AdvancedGraphicsScene* scene;
+
+private slots:
+	void setMousePosition(const QPointF pos);
 };
 
 #endif // MAINWINDOW_H
