@@ -30,6 +30,11 @@ public:
 
 	virtual void paint(QPainter* painter, const QStyleOptionGraphicsItem* options, QWidget*);
 
+	virtual QPainterPath shape() const;
+
+protected:
+	virtual QVariant itemChange(GraphicsItemChange change, const QVariant& value);
+
 private:
 	QRectF myRect;
 

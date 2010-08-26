@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	/*QGraphicsEllipseItem* item = scene->addEllipse(10, 10, 200, 200);*/
 	uml::ui::ClassGraphicsItem* item = new uml::ui::ClassGraphicsItem("Class1");
-	item->setFlag(QGraphicsItem::ItemIsMovable, true);
 	scene->addItem(item);
 
 	connect(ui.graphicsView, SIGNAL(mousePositionChanged(const QPointF)), this,
@@ -21,9 +20,14 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 void MainWindow::setMousePosition(const QPointF pos) {
-	QString msg = QString("(%1 %2)").arg(pos.x(), 0, 'f', 2).arg(pos.y(), 0, 'f', 2);
+	QString msg = QString("(%1 %2)").arg(pos.x(), 0, 'f', 2).arg(pos.y(), 0,
+			'f', 2);
 
-	ui.statusbar->showMessage(msg);
+	if (QGraphicsItem *item = scene->itemAt(pos)) {
+		ui.statusbar->showMessage(msg + " inside item");
+	} else {
+		ui.statusbar->showMessage(msg);
+	}
 }
 
 MainWindow::~MainWindow() {
