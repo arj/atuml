@@ -16,6 +16,16 @@
 
 namespace atuml {
 
+class Connection {
+public:
+    void trackNodes() {}
+
+    bool operator==(const Connection&) const {
+        return false; // Template only
+	}
+
+};
+
 /**
  * An item which can be connected by a Connection.
  */
@@ -60,35 +70,6 @@ protected:
      * updates.
      */
     void trackConnections();
-
-/*def removeConnection(self, connection):
-        '''
-        Removing the given connection from the connection list.
-        '''
-        self.__connections.remove(connection)
-    
-    def itemChange(self, change, value):
-        '''
-        This method is called whenever something changes, i.e.
-        position, size, ...
-        If the position has changed we need to track the connections.
-        BEWARE: Before Qt4.6 ItemPositionHasChanged was automatically
-                called. Since Qt4.6 flag must be set before this is called!
-        '''
-        if (change == QtGui.QGraphicsItem.ItemPositionChange):
-            self.trackConnections()
-        
-        if (change == QtGui.QGraphicsItem.ItemPositionHasChanged):
-            self.trackConnections()
-        
-        return QtGui.QGraphicsItem.itemChange(self,  change, value)
-    
-    def trackConnections(self):
-        '''
-        Inform all the connections for position updates.
-        '''
-        for conn in self.__connections:
-            conn.trackNodes()*/
 
 private:
     QList<Connection> fConnections;

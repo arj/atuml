@@ -8,6 +8,7 @@ FORMS = src/ui/mainwindow.ui
 # QT += opengl
 # Input
 HEADERS += src/ui/advancedgraphicsscene.h \
+    src/connectableitem.h \
     src/exceptions.h \
     src/globals.h \
     src/uml/classgraphicsitem.h \
@@ -29,6 +30,7 @@ HEADERS += src/ui/advancedgraphicsscene.h \
     src/atumlsettingsprovider.h \
     src/uml/umldiagram.h
 SOURCES += src/ui/advancedgraphicsccene.cpp \
+    src/connectableitem.cpp \
     src/globals.cpp \
     src/exceptions.cpp \
     src/uml/classgraphicsitem.cpp \

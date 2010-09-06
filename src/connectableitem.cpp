@@ -10,6 +10,7 @@
 
 #include "connectableitem.h"
 #include "exceptions.h"
+#include <QApplication>
 
 namespace atuml {
 
@@ -39,7 +40,7 @@ void ConnectableItem::ItemChange(GraphicsItemChange change, const QVariant& valu
         trackConnections();
     }
 
-    return QGraphicsItem::itemChange(change, value);
+    QGraphicsItem::itemChange(change, value);
 }
 
 void ConnectableItem::trackConnections() {
