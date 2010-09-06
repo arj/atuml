@@ -16,12 +16,13 @@
 #include <QStyleOptionGraphicsItem>
 #include <QWidget>
 #include "class.h"
+#include "../connectableitem.h"
 
 namespace uml {
 
 namespace ui {
 
-class ClassGraphicsItem: public uml::Class, public QGraphicsItem {
+class ClassGraphicsItem: public uml::Class, public atuml::ConnectableItem {
 public:
 	ClassGraphicsItem(const QString name, QGraphicsItem* parent = 0);
 	virtual ~ClassGraphicsItem();

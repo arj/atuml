@@ -14,7 +14,7 @@
 
 namespace atuml {
 
-ConnectableItem::ConnectableItem() : QGraphicsItem() {
+ConnectableItem::ConnectableItem(QGraphicsItem* parent) : QGraphicsItem(parent) {
     
 }
 

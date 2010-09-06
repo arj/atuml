@@ -15,7 +15,7 @@ namespace uml {
 namespace ui {
 
 ClassGraphicsItem::ClassGraphicsItem(const QString name, QGraphicsItem* parent) :
-	uml::Class(name), QGraphicsItem(parent) {
+	uml::Class(name), ConnectableItem(parent) {
 
 	setFlags(ItemIsMovable | ItemIsSelectable);
 

@@ -34,7 +34,7 @@ public:
 	/**
 	 * Constructor which create a new ConnectableItem.
 	 */
-    ConnectableItem();
+    ConnectableItem(QGraphicsItem* parent = 0);
 
     /**
      * Adds a new connection to the item.
