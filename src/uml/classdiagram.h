@@ -5,6 +5,9 @@
 #include "class.h"
 #include <QList>
 
+
+namespace atuml {
+
 namespace uml {
 
 /**
@@ -43,6 +46,8 @@ private:
 	 */
 	QList<Class*> fClasses;
 };
+
+}
 
 }
 

@@ -18,6 +18,8 @@
 #include "visibility.h"
 #include "multiplicity.h"
 
+namespace atuml {
+
 namespace uml {
 
 /**
@@ -180,6 +182,8 @@ private:
 	 */
 	QStringList fProperties;
 };
+
+}
 
 }
 

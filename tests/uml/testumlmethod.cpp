@@ -13,9 +13,8 @@
 #include "../src/uml/method.h"
 #include "../src/exceptions.h"
 
-
-using namespace uml;
 using namespace atuml;
+using namespace atuml::uml;
 
 void TestUmlMethod::constructor() {
 	Method method("test");

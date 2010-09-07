@@ -11,6 +11,8 @@
 #include "method.h"
 #include "../exceptions.h"
 
+namespace atuml {
+
 namespace uml {
 
 Method::Method(const QString name) {
@@ -111,6 +113,8 @@ QString Method::name() const {
 
 const QList<Parameter> Method::parameter() const {
 	return fParameter;
+}
+
 }
 
 }

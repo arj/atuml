@@ -13,8 +13,8 @@
 #include "../src/uml/attribute.h"
 #include "../src/exceptions.h"
 
-using namespace uml;
 using namespace atuml;
+using namespace atuml::uml;
 
 void TestUmlClass::constructor() {
 	Class c("TestClass");

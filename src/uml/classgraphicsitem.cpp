@@ -10,6 +10,8 @@
 
 #include "classgraphicsitem.h"
 
+namespace atuml {
+
 namespace uml {
 
 namespace ui {
@@ -65,6 +67,8 @@ QPainterPath ClassGraphicsItem::shape() const {
 QVariant ClassGraphicsItem::itemChange(GraphicsItemChange change,
 		const QVariant& value) {
 	return QGraphicsItem::itemChange(change, value);
+}
+
 }
 
 }

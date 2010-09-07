@@ -11,6 +11,8 @@
 #include "parameter.h"
 #include "../exceptions.h"
 
+namespace atuml {
+
 namespace uml {
 
 Parameter::Parameter(const QString name, const QString type) {
@@ -91,6 +93,8 @@ QVariant Parameter::defaultValue() const {
 
 const QStringList Parameter::properties() const {
 	return fProperties;
+}
+
 }
 
 }

@@ -15,6 +15,8 @@
 #include <QApplication>
 #include "../exceptions.h"
 
+namespace atuml {
+
 namespace uml {
 
 /**
@@ -93,6 +95,8 @@ public:
 		throw atuml::InvalidParameterException(qApp->translate("Exception", qPrintable(msg)));
 	}
 };
+
+}
 
 }
 

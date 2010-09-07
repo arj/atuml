@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QString>
 
+namespace atuml {
+
 namespace uml {
 
 /**
@@ -42,6 +44,8 @@ private:
 	 */
 	QString fTitle;
 };
+
+}
 
 }
 

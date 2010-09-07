@@ -17,6 +17,8 @@
 #include "attribute.h"
 #include "method.h"
 
+namespace atuml {
+
 namespace uml {
 
 /**
@@ -167,6 +169,8 @@ private:
 	 */
 	QList<Method> fMethods;
 };
+
+}
 
 }
 

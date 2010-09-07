@@ -16,6 +16,8 @@
 #include <QVariant>
 #include "multiplicity.h"
 
+namespace atuml {
+
 namespace uml {
 
 /**
@@ -159,6 +161,8 @@ private:
 	 */
 	QStringList fProperties;
 };
+
+}
 
 }
 

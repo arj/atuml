@@ -3,6 +3,8 @@
 #include "advancedgraphicsscene.h"
 #include "../uml/classgraphicsitem.h"
 
+using namespace atuml::uml::ui;
+
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent) {
 	ui.setupUi(this);
@@ -12,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui.graphicsView->setScene(scene);
 
 	/*QGraphicsEllipseItem* item = scene->addEllipse(10, 10, 200, 200);*/
-	uml::ui::ClassGraphicsItem* item = new uml::ui::ClassGraphicsItem("Class1");
+	ClassGraphicsItem* item = new ClassGraphicsItem("Class1");
 	scene->addItem(item);
 
 	connect(ui.graphicsView, SIGNAL(mousePositionChanged(const QPointF)), this,

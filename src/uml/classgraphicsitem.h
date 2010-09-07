@@ -18,6 +18,8 @@
 #include "class.h"
 #include "../connectableitem.h"
 
+namespace atuml {
+
 namespace uml {
 
 namespace ui {
@@ -40,6 +42,8 @@ private:
 	QRectF myRect;
 
 };
+
+}
 
 }
 
