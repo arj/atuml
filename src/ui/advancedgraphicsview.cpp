@@ -31,7 +31,6 @@ AdvancedGraphicsView::AdvancedGraphicsView(QWidget* parent) :
 	zoomFactor = 1;
 
 	// Mouse move events should occur without any button pressed
-	qDebug() << hasMouseTracking(); // TODO Why does it still work?
 	setMouseTracking(true);
 }
 

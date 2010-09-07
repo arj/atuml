@@ -23,7 +23,8 @@ void MainWindow::setMousePosition(const QPointF pos) {
 	QString msg = QString("(%1 %2)").arg(pos.x(), 0, 'f', 2).arg(pos.y(), 0,
 			'f', 2);
 
-	if (QGraphicsItem *item = scene->itemAt(pos)) {
+	// if (QGraphicsItem *item = scene->itemAt(pos)) {
+	if (scene->itemAt(pos)) {
 		ui.statusbar->showMessage(msg + " inside item");
 	} else {
 		ui.statusbar->showMessage(msg);

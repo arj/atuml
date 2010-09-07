@@ -5,6 +5,17 @@
   See http://doc.trolltech.com/4.5/qgraphicsscene.html#drawBackground
   --> Performance may be a problem?!
 
+* Implement QApplication::commitData which is called after a shutdown
+  of the operating system is initialized?!
+
+* Debugging stuff:
+    - http://doc.trolltech.com/4.5/qdebug.html#details
+    - http://doc.trolltech.com/4.5/debug.html
+    - http://doc.trolltech.com/4.5/custom-types.html#making-the-type-printable
+    - http://doc.trolltech.com/4.5/debug.html#debugging-macros
+    - This might be usefull for a message/debugging "console" window:
+        http://doc.trolltech.com/4.2/qtglobal.html#qInstallMsgHandler
+
 Done:
 ================================================================================
 

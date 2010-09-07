@@ -34,7 +34,7 @@ int Atuml::run()
 
     // wait for 2 sec. One should see the splash screen ;)
     // TODO Remove this for releases
-    SleeperThread::msleep(2000);
+    // SleeperThread::msleep(1000);
 
     mainwindow->showMaximized();
     splashscreen->finish(mainwindow);
