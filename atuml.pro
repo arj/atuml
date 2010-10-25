@@ -28,7 +28,8 @@ HEADERS += src/ui/advancedgraphicsscene.h \
     src/uml/helpers/classdiagramprinter.h \
     src/atuml.h \
     src/atumlsettingsprovider.h \
-    src/uml/umldiagram.h
+    src/uml/umldiagram.h \
+    src/providers/umldiagramprovider.h
 SOURCES += src/ui/advancedgraphicsccene.cpp \
     src/connectableitem.cpp \
     src/globals.cpp \
@@ -49,7 +50,8 @@ SOURCES += src/ui/advancedgraphicsccene.cpp \
     src/atuml.cpp \
     src/main.cpp \
     src/atumlsettingsprovider.cpp \
-    src/uml/umldiagram.cpp
+    src/uml/umldiagram.cpp \
+    src/providers/umldiagramprovider.cpp
 
 # - is necessary for nice filename, i.e
 # make dist produces $TARGET$VERSION which yields atuml-0.0.1
