@@ -3,6 +3,8 @@
 #include "advancedgraphicsscene.h"
 #include "graphicsitem/classgraphicsitem.h"
 
+using namespace atuml::uml::ui;
+
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent) {
 	ui.setupUi(this);

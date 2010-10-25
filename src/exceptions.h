@@ -66,7 +66,7 @@ public:
 };
 
 /**
- * The DoubleEntryException can be used there would be a double element
+ * The DoubleEntryException can be used if there would be a double element
  * in a list.
  */
 class DoubleEntryException: public Exception {
@@ -85,6 +85,29 @@ public:
 	 * Virtual destructor. Not used but perhaps by subclasses?
 	 */
 	virtual ~DoubleEntryException() {
+	}
+};
+
+/**
+ * The InvalidUmlDiagramException is thrown if an invalid uml diagram is
+ * read using a UmlDiagramProvider.
+ */
+class InvalidUmlDiagramException: public Exception {
+public:
+
+	/**
+	 * Constructor creating an exception with a message.
+	 *
+	 * @param message The message for the exception.
+	 */
+	InvalidUmlDiagramException(QString message) :
+		Exception(message) {
+	}
+
+	/**
+	 * Virtual destructor. Not used but perhaps by subclasses?
+	 */
+	virtual ~InvalidUmlDiagramException() {
 	}
 };
 

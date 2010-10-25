@@ -12,8 +12,8 @@
 #include "../src/uml/multiplicity.h"
 #include "../src/exceptions.h"
 
-using namespace uml;
 using namespace atuml;
+using namespace atuml::uml;
 
 void TestUmlMultiplicity::constructor() {
 	Multiplicity m;

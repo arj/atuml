@@ -30,6 +30,7 @@ HEADERS += src/ui/graphicsitem/connectableitem.h \
     src/atumlsettingsprovider.h \
     src/uml/umldiagram.h \
     src/ui/graphicsitem/resizeableitem.h
+
 SOURCES += src/ui/graphicsitem/connectableitem.cpp \
     src/ui/advancedgraphicsccene.cpp \
     src/globals.cpp \
@@ -51,7 +52,11 @@ SOURCES += src/ui/graphicsitem/connectableitem.cpp \
     src/main.cpp \
     src/atumlsettingsprovider.cpp \
     src/uml/umldiagram.cpp \
+<<<<<<< HEAD
     src/ui/graphicsitem/resizeableitem.cpp
+=======
+    src/providers/umldiagramprovider.cpp
+>>>>>>> b8526a66a12f1674970c1f0e0d31693bc51ca843
 
 # - is necessary for nice filename, i.e
 # make dist produces $TARGET$VERSION which yields atuml-0.0.1

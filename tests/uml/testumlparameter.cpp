@@ -12,8 +12,8 @@
 #include "../src/uml/parameter.h"
 #include "../src/exceptions.h"
 
-using namespace uml;
 using namespace atuml;
+using namespace atuml::uml;
 
 void TestUmlParameter::constructor() {
 	Parameter p("name", "type");

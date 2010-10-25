@@ -17,6 +17,8 @@
 #include "visibility.h"
 #include "parameter.h"
 
+namespace atuml {
+
 namespace uml {
 
 /**
@@ -182,6 +184,8 @@ private:
 	 */
 	QStringList fProperties;
 };
+
+}
 
 }
 

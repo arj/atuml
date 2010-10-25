@@ -1,6 +1,8 @@
 #include "class.h"
 #include "../exceptions.h"
 
+namespace atuml {
+
 namespace uml {
 
 Class::Class(const QString name) : fAbstract(false), fActive(false) {
@@ -65,6 +67,8 @@ QString Class::name() const {
 
 bool Class::active() const {
 	return fActive;
+}
+
 }
 
 }

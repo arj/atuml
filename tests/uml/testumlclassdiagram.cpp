@@ -12,7 +12,7 @@
 #include "../src/uml/classdiagram.h"
 #include "../src/uml/class.h"
 
-using namespace uml;
+using namespace atuml::uml;
 
 void TestUmlClassDiagram::constructor() {
     ClassDiagram cd("Test");

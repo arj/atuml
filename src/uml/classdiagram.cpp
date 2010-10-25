@@ -10,6 +10,8 @@
 
 #include "classdiagram.h"
 
+namespace atuml {
+
 namespace uml {
 
 void ClassDiagram::addClass(Class *theclass) {
@@ -18,6 +20,8 @@ void ClassDiagram::addClass(Class *theclass) {
 
 const QList<Class*> ClassDiagram::classes() const {
     return fClasses;
+}
+
 }
 
 }

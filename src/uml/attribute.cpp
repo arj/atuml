@@ -13,6 +13,8 @@
 #include "../exceptions.h"
 #include "visibility.h"
 
+namespace atuml {
+
 namespace uml {
 
 Attribute::Attribute(const QString name) {
@@ -107,6 +109,8 @@ QVariant Attribute::defaultValue() const {
 
 const QStringList Attribute::properties() const {
 	return fProperties;
+}
+
 }
 
 }

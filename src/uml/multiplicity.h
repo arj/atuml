@@ -14,6 +14,8 @@
 #include <QApplication>
 #include "../exceptions.h"
 
+namespace atuml {
+
 namespace uml {
 
 /**
@@ -105,6 +107,8 @@ private:
 	 */
 	quint32 fmaximum;
 };
+
+}
 
 }
 

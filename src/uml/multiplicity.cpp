@@ -11,9 +11,13 @@
 #include "multiplicity.h"
 #include "../globals.h"
 
+namespace atuml {
+
 namespace uml {
 
 // Initialization of constant member.
 const quint32 Multiplicity::Infinity = QUINT32MAX;
+
+}
 
 }

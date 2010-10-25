@@ -4,10 +4,18 @@
 #include <QString>
 #include "../classdiagram.h"
 
+namespace atuml {
+
+namespace uml {
+
 class ClassDiagramPrinter
 {
 public:
-	static QString print(const uml::ClassDiagram &classdiagram);
+	static QString print(const ClassDiagram &classdiagram);
 };
+
+}
+
+}
 
 #endif
