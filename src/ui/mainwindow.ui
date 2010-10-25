@@ -43,7 +43,7 @@
      <number>0</number>
     </property>
     <item>
-     <widget class="AdvancedGraphicsView" name="graphicsView"/>
+     <widget class="atuml::ui::AdvancedGraphicsView" name="graphicsView"/>
     </item>
    </layout>
   </widget>
@@ -815,7 +815,7 @@ QRadioButton::checked {
  </widget>
  <customwidgets>
   <customwidget>
-   <class>AdvancedGraphicsView</class>
+   <class>atuml::ui::AdvancedGraphicsView</class>
    <extends>QGraphicsView</extends>
    <header>src/ui/advancedgraphicsview.h</header>
   </customwidget>

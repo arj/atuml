@@ -15,6 +15,10 @@
 #include <QWheelEvent>
 #include <QMouseEvent>
 
+namespace atuml {
+
+namespace ui {
+
 class AdvancedGraphicsView: public QGraphicsView {
 
 Q_OBJECT
@@ -80,5 +84,9 @@ private:
 	 */
 	qreal zoomFactor;
 };
+
+}
+
+}
 
 #endif /* _ADVANCEDGRAPHICSVIEW_H_ */

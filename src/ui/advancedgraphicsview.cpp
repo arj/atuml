@@ -14,6 +14,10 @@
 #include <QPoint>
 #include <QDebug>
 
+namespace atuml {
+
+namespace ui {
+
 // For OpenGL based rendering enable the following line and add opengl
 // to QT variable in the project file
 // #include <QGLWidget>
@@ -96,4 +100,8 @@ void AdvancedGraphicsView::mouseMoveEvent(QMouseEvent* e) {
 		e->ignore();
 		QGraphicsView::mouseMoveEvent(e);
 	}
+}
+
+}
+
 }

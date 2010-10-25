@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include <QGraphicsEllipseItem>
 #include "advancedgraphicsscene.h"
-#include "../uml/classgraphicsitem.h"
+#include "graphicsitem/classgraphicsitem.h"
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent) {
@@ -11,9 +11,20 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	ui.graphicsView->setScene(scene);
 
-	/*QGraphicsEllipseItem* item = scene->addEllipse(10, 10, 200, 200);*/
-	uml::ui::ClassGraphicsItem* item = new uml::ui::ClassGraphicsItem("Class1");
+	uml::ui::ClassGraphicsItem* item = new uml::ui::ClassGraphicsItem("Window");
+	((uml::Class*) item)->setActive(true);
 	scene->addItem(item);
+
+
+	srand ( time(NULL) );
+
+	for (int i=0;i<10;i++) {
+		uml::ui::ClassGraphicsItem* item2 = new uml::ui::ClassGraphicsItem("Widget");
+		qreal x = (float) rand() / (float) RAND_MAX * 100;
+		qreal y = (float) rand() / (float) RAND_MAX * 100;
+		item2->setPos(x,y);
+		scene->addItem(item2);
+	}
 
 	connect(ui.graphicsView, SIGNAL(mousePositionChanged(const QPointF)), this,
 			SLOT(setMousePosition(const QPointF)));

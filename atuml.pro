@@ -7,11 +7,11 @@ FORMS = src/ui/mainwindow.ui
 
 # QT += opengl
 # Input
-HEADERS += src/ui/advancedgraphicsscene.h \
-    src/connectableitem.h \
+HEADERS += src/ui/graphicsitem/connectableitem.h \
+    src/ui/advancedgraphicsscene.h \
     src/exceptions.h \
     src/globals.h \
-    src/uml/classgraphicsitem.h \
+    src/ui/graphicsitem/classgraphicsitem.h \
     src/helpers/sleeperthread.h \
     src/ui/advancedgraphicsview.h \
     src/ui/mainwindow.h \
@@ -28,12 +28,13 @@ HEADERS += src/ui/advancedgraphicsscene.h \
     src/uml/helpers/classdiagramprinter.h \
     src/atuml.h \
     src/atumlsettingsprovider.h \
-    src/uml/umldiagram.h
-SOURCES += src/ui/advancedgraphicsccene.cpp \
-    src/connectableitem.cpp \
+    src/uml/umldiagram.h \
+    src/ui/graphicsitem/resizeableitem.h
+SOURCES += src/ui/graphicsitem/connectableitem.cpp \
+    src/ui/advancedgraphicsccene.cpp \
     src/globals.cpp \
     src/exceptions.cpp \
-    src/uml/classgraphicsitem.cpp \
+    src/ui/graphicsitem/classgraphicsitem.cpp \
     src/ui/advancedgraphicsview.cpp \
     src/ui/mainwindow.cpp \
     src/uml/parameter.cpp \
@@ -49,7 +50,8 @@ SOURCES += src/ui/advancedgraphicsccene.cpp \
     src/atuml.cpp \
     src/main.cpp \
     src/atumlsettingsprovider.cpp \
-    src/uml/umldiagram.cpp
+    src/uml/umldiagram.cpp \
+    src/ui/graphicsitem/resizeableitem.cpp
 
 # - is necessary for nice filename, i.e
 # make dist produces $TARGET$VERSION which yields atuml-0.0.1

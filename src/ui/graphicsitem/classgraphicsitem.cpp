@@ -36,24 +36,33 @@ QRectF ClassGraphicsItem::boundingRect() const {
 }
 
 void ClassGraphicsItem::paint(QPainter* painter,
-		const QStyleOptionGraphicsItem* options, QWidget* widget) {
+		const QStyleOptionGraphicsItem* options, QWidget* /*widget*/) {
 
-	QPen pen;
-	pen.setWidth(10);
+	QBrush brush(QColor("#edff00"));
 
 	if (options->state & QStyle::State_Selected) {
-		pen.setColor(QColor("green"));
-	} else {
-		pen.setColor(QColor("blue"));
+		brush.setColor(QColor("#b7ff00"));
 	}
 
-	painter->setPen(pen);
+	QRectF pRect = myRect;
 
-	/*QRectF m = myRect;
-	m.translate(-myRect.center());*/
+	painter->drawRect(pRect);
+	painter->fillRect(pRect, brush);
 
-	painter->drawRoundRect(myRect);
-	painter->drawPoint(QPoint(0,0));
+	if (active()) {
+		pRect.adjust(5,0,-5,0);
+
+		painter->drawRect(pRect);
+		painter->fillRect(pRect, brush);
+	}
+
+
+	QFont font(painter->font());
+	font.setPointSize(12);
+	font.setBold(true);
+	painter->setFont(font);
+
+	painter->drawText(pRect.translated(0,10), Qt::AlignHCenter, this->name());
 }
 
 QPainterPath ClassGraphicsItem::shape() const {

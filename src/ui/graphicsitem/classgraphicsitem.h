@@ -15,8 +15,8 @@
 #include <QPainter>
 #include <QStyleOptionGraphicsItem>
 #include <QWidget>
-#include "class.h"
-#include "../connectableitem.h"
+#include "../../uml/class.h"
+#include "connectableitem.h"
 
 namespace uml {
 

@@ -4,7 +4,6 @@
 #include "uml/method.h"
 #include "uml/classdiagram.h"
 #include "uml/helpers/classdiagramprinter.h"
-#include "uml/classgraphicsitem.h"
 
 int main(int argc, char *argv[])
 {

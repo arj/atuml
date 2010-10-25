@@ -5,7 +5,7 @@
 
 Atuml::Atuml(QApplication &app) : application(app)
 {
-    splashscreen = new QSplashScreen(QPixmap(":/pictures/atuml.png"));
+    splashscreen = new QSplashScreen(QPixmap(":/pictures/splashscreen.png"));
 
     settingsProvider = &AtumlSettingsProvider::getInstance();
 
@@ -29,12 +29,12 @@ int Atuml::run()
 		splashscreen->show();
 	}
 
-    showMessage("Initialization");
+    /*showMessage("Initialization");*/
     application.processEvents();
 
     // wait for 2 sec. One should see the splash screen ;)
     // TODO Remove this for releases
-    // SleeperThread::msleep(1000);
+    SleeperThread::msleep(3000);
 
     mainwindow->showMaximized();
     splashscreen->finish(mainwindow);

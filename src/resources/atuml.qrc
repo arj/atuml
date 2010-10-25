@@ -43,5 +43,6 @@
   <qresource prefix="pictures" >
     <file>atum.png</file>
     <file>atuml.png</file>
+    <file>splashscreen.png</file>
   </qresource>
 </RCC>
