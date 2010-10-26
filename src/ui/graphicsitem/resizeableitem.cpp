@@ -11,11 +11,12 @@
 #include "resizeableitem.h"
 #include "../../exceptions.h"
 #include <QApplication>
+#include <QPainter>
 
 namespace atuml {
 
-ResizeableItem::ResizeableItem(bool additionalHandles, int sizingSteps,
-		int boxsize, QGraphicsItem* parent) :
+ResizeableItem::ResizeableItem(const QRectF& rect, QGraphicsItem* parent, bool additionalHandles, int sizingSteps,
+		int boxsize) :
 	ConnectableItem(parent) {
 
 	QGraphicsItem::setFlag(QGraphicsItem::ItemIsMovable);
@@ -29,6 +30,29 @@ ResizeableItem::ResizeableItem(bool additionalHandles, int sizingSteps,
 	this->activeHandle = -1;
 	this->handleBrush = QBrush(QColor("#ffffff"));
 	this->handleActiveBrush = QBrush(QColor("#000000"));
+
+	this->updateHandles(rect);
+}
+
+void ResizeableItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget* /*widget*/) {
+	if (this->isSelected()) {
+		QBrush oldBrush = painter->brush();
+
+		painter->setBrush(this->handleBrush);
+		painter->drawRect(this->handlePos[0]);
+
+		painter->setBrush(oldBrush);
+	}
+}
+
+void ResizeableItem::updateHandles(const QRectF& rect) {
+	// now calculating the handle center positions on all edges
+	QPointF centerLeft(rect.left(), rect.center().y());
+	QPointF centerRight(rect.right(), centerLeft.y());
+	QPointF centerTop(rect.center().x(), rect.top());
+    QPointF centerBottom(centerTop.x(), rect.bottom());
+
+	handlePos[0] = QRectF(rect.topLeft(), rect.topLeft() + QPointF(this->fBoxSize, this->fBoxSize));
 }
 
 void ResizeableItem::setAdditionalHandles(const bool additionalHandles) {

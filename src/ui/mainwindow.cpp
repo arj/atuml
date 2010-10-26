@@ -13,15 +13,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	ui.graphicsView->setScene(scene);
 
-	uml::ui::ClassGraphicsItem* item = new uml::ui::ClassGraphicsItem("Window");
-	((uml::Class*) item)->setActive(true);
+	ClassGraphicsItem* item = new ClassGraphicsItem("Window");
+	((atuml::uml::Class*) item)->setActive(true);
 	scene->addItem(item);
 
 
 	srand ( time(NULL) );
 
 	for (int i=0;i<10;i++) {
-		uml::ui::ClassGraphicsItem* item2 = new uml::ui::ClassGraphicsItem("Widget");
+		ClassGraphicsItem* item2 = new ClassGraphicsItem("Widget");
 		qreal x = (float) rand() / (float) RAND_MAX * 100;
 		qreal y = (float) rand() / (float) RAND_MAX * 100;
 		item2->setPos(x,y);

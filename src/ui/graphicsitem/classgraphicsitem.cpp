@@ -17,7 +17,7 @@ namespace uml {
 namespace ui {
 
 ClassGraphicsItem::ClassGraphicsItem(const QString name, QGraphicsItem* parent) :
-	uml::Class(name), ConnectableItem(parent) {
+	uml::Class(name), ResizeableItem(QRectF(10,10,200,200),parent) {
 
 	setFlags(ItemIsMovable | ItemIsSelectable);
 
@@ -38,7 +38,7 @@ QRectF ClassGraphicsItem::boundingRect() const {
 }
 
 void ClassGraphicsItem::paint(QPainter* painter,
-		const QStyleOptionGraphicsItem* options, QWidget* /*widget*/) {
+		const QStyleOptionGraphicsItem* options, QWidget* widget) {
 
 	QBrush brush(QColor("#edff00"));
 
@@ -65,6 +65,8 @@ void ClassGraphicsItem::paint(QPainter* painter,
 	painter->setFont(font);
 
 	painter->drawText(pRect.translated(0,10), Qt::AlignHCenter, this->name());
+
+	ResizeableItem::paint(painter, options, widget);
 }
 
 QPainterPath ClassGraphicsItem::shape() const {

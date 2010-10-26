@@ -9,7 +9,7 @@
  */
 
 #include "connectableitem.h"
-#include "exceptions.h"
+#include "../../exceptions.h"
 #include <QApplication>
 
 namespace atuml {

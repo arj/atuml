@@ -14,6 +14,8 @@
 #include <QString>
 #include <QGraphicsItem>
 #include <QBrush>
+#include <QRectF>
+#include <QList>
 #include "connectableitem.h"
 
 namespace atuml {
@@ -36,8 +38,21 @@ public:
 	/**
 	 * Constructor which create a new ResizeableItem.
 	 */
-	ResizeableItem(bool additionalHandles = true, int sizingSteps = 1,
-			int boxsize = 8, QGraphicsItem* parent = 0);
+	ResizeableItem(const QRectF& rect, QGraphicsItem* parent = 0, bool additionalHandles = true,
+			int sizingSteps = 1, int boxsize = 8);
+
+	/**
+	 * The paint method draws the handles on the item.
+	 * The child item must call this function after it has
+	 * completed its own paintings.
+	 *
+	 * @param painter The painter object used for painting
+	 * @param option The current state of the graphic item
+	 * @param widget The widget that is beiing painted on.
+	 */
+	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
+
+	// **** getter and setter **** //
 
 	/**
 	 * Enables or disables the additional handles.
@@ -62,7 +77,11 @@ public:
 	int boxSize() const;
 
 protected:
-	// def updateHandles(self, rect):
+	/**
+	 *  Stores the positions of the handles (according to the item rect)
+	 *  into this->handlePos which can easily be used for drawing.
+	 */
+	void updateHandles(const QRectF& rect);
 
 	// def paint(self, painter, option, widget = None):
 
@@ -113,6 +132,12 @@ private:
 	 * The size of the boxes/handles.
 	 */
 	int fBoxSize;
+
+	/**
+	 * An array containing the position rectangles for all 12
+	 * handles.
+	 */
+	QRectF handlePos[12];
 };
 
 }
