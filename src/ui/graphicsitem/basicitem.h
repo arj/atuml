@@ -137,6 +137,18 @@ protected:
 	// def mouseReleaseEvent(self, event):
 
 private:
+	enum Handle {
+		None = -1,
+		TopLeft = 0,
+		TopRight,
+		BottomLeft,
+		BottomRight,
+		CenterLeft,
+		CenterRight,
+		CenterTop,
+		CenterBottom,
+	};
+
 	// Internal variables
 
 	/**
@@ -149,7 +161,7 @@ private:
 	 * resize event.
 	 * @todo Give internal numbering of the handles, e.g. via enum?
 	 */
-	int activeHandle;
+	Handle activeHandle;
 
 	/**
 	 * The brush used to paint the handles in normal state.
@@ -179,10 +191,10 @@ private:
 	int fBoxSize;
 
 	/**
-	 * An array containing the position rectangles for all 12
+	 * An array containing the position rectangles for all 8
 	 * handles.
 	 */
-	QRectF handlePos[12];
+	QRectF handlePos[8];
 
 	/**
 	 * List holding all the connections.

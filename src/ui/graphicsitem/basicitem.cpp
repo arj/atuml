@@ -26,7 +26,7 @@ BasicItem::BasicItem(QGraphicsItem* parent) :
 	this->fBoxSize = 8;
 
 	this->currentState = STATE_NOTHING;
-	this->activeHandle = -1;
+	this->activeHandle = None;
 	this->handleBrush = QBrush(QColor("#ffffff"));
 	this->handleActiveBrush = QBrush(QColor("#000000"));
 
@@ -75,7 +75,9 @@ void BasicItem::paint(QPainter* painter,
 		QBrush oldBrush = painter->brush();
 
 		painter->setBrush(this->handleBrush);
-		painter->drawRect(this->handlePos[0]);
+		for (int i = 0; i < 8; i++) {
+			painter->drawRect(this->handlePos[i]);
+		}
 
 		painter->setBrush(oldBrush);
 	}
@@ -95,8 +97,24 @@ void BasicItem::updateHandles(const QRectF& rect) {
 	QPointF centerTop(rect.center().x(), rect.top());
 	QPointF centerBottom(centerTop.x(), rect.bottom());
 
-	handlePos[0] = QRectF(rect.topLeft(), rect.topLeft() + QPointF(
+	handlePos[TopLeft] = QRectF(rect.topLeft(), rect.topLeft() + QPointF(
 			this->fBoxSize, this->fBoxSize));
+	handlePos[TopRight] = QRectF(rect.topRight() + QPointF(-this->fBoxSize, 0),
+			rect.topRight() + QPointF(0, this->fBoxSize));
+	handlePos[BottomLeft] = QRectF(rect.bottomLeft() + QPointF(0,
+			-this->fBoxSize), rect.bottomLeft() + QPointF(this->fBoxSize, 0));
+	handlePos[BottomRight] = QRectF(rect.bottomRight() + QPointF(
+			-this->fBoxSize, -this->fBoxSize), rect.bottomRight());
+	handlePos[CenterLeft] = QRectF(
+			centerLeft + QPointF(0, -this->fBoxSize / 2), centerLeft + QPointF(
+					this->fBoxSize, this->fBoxSize / 2));
+	handlePos[CenterRight] = QRectF(centerRight + QPointF(-this->fBoxSize,
+			-this->fBoxSize / 2), centerRight + QPointF(0, this->fBoxSize / 2));
+	handlePos[CenterTop] = QRectF(centerTop + QPointF(-this->fBoxSize / 2, 0),
+			centerTop + QPointF(this->fBoxSize / 2, this->fBoxSize));
+	handlePos[CenterBottom] = QRectF(centerBottom + QPointF(
+			-this->fBoxSize / 2, -this->fBoxSize), centerBottom + QPointF(
+			this->fBoxSize / 2, 0));
 }
 
 void BasicItem::setAdditionalHandles(const bool additionalHandles) {
