@@ -21,10 +21,11 @@ ClassGraphicsItem::ClassGraphicsItem(const QString name, QGraphicsItem* parent) 
 
 	setFlags(ItemIsMovable | ItemIsSelectable);
 
-	this->setRect(QRectF(10, 10, 200, 200));
-
-	myRect = this->rect();
+	QRectF myRect = QRectF(10, 10, 200, 200);
 	myRect.translate(-myRect.center());
+
+	this->setRect(myRect);
+
 	setPos(10, 110);
 }
 
@@ -32,9 +33,9 @@ ClassGraphicsItem::~ClassGraphicsItem() {
 }
 
 QRectF ClassGraphicsItem::boundingRect() const {
-	QRectF m = myRect;
+	QRectF m = rect();
 	m.adjust(-5,-5,5,5);
-	m.translate(-myRect.center());
+	m.translate(-rect().center());
 
 	return m;
 }
@@ -48,7 +49,7 @@ void ClassGraphicsItem::paint(QPainter* painter,
 		brush.setColor(QColor("#b7ff00"));
 	}
 
-	QRectF pRect = myRect;
+	QRectF pRect = rect();
 
 	painter->drawRect(pRect);
 	painter->fillRect(pRect, brush);
@@ -73,7 +74,7 @@ void ClassGraphicsItem::paint(QPainter* painter,
 
 QPainterPath ClassGraphicsItem::shape() const {
 	QPainterPath p;
-	p.addRoundRect(myRect,25,25);
+	p.addRoundRect(rect(),25,25);
 	return p;
 }
 

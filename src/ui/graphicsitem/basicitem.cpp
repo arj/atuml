@@ -19,6 +19,8 @@ BasicItem::BasicItem(QGraphicsItem* parent) :
 	setFlag(QGraphicsItem::ItemIsMovable);
 	setFlag(QGraphicsItem::ItemIsSelectable);
 
+	// TODO Setting ItemPositionHasChanged for Qt >= 4.6 ?
+
 	this->fAdditionalHandles = false;
 	this->fSizingSteps = 5;
 	this->fBoxSize = 8;
@@ -77,6 +79,13 @@ void BasicItem::paint(QPainter* painter,
 
 		painter->setBrush(oldBrush);
 	}
+}
+
+void BasicItem::setRect(const QRectF& rectangle) {
+	QGraphicsRectItem::setRect(rectangle);
+
+	updateHandles(rectangle);
+	trackConnections();
 }
 
 void BasicItem::updateHandles(const QRectF& rect) {

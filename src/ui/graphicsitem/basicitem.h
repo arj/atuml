@@ -58,6 +58,13 @@ public:
 			const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
 
 	/**
+	 * Sets the rectangle of the item.
+	 *
+	 * @param rectangle The new rectangle.
+	 */
+	virtual void setRect(const QRectF& rectangle);
+
+	/**
 	 * Adds a new connection to the item.
 	 * If the same connection is added again, a
 	 * DoubleEntryException is thrown.
