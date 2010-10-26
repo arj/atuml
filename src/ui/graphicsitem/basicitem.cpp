@@ -19,7 +19,10 @@ BasicItem::BasicItem(QGraphicsItem* parent) :
 	setFlag(QGraphicsItem::ItemIsMovable);
 	setFlag(QGraphicsItem::ItemIsSelectable);
 
-	// TODO Setting ItemPositionHasChanged for Qt >= 4.6 ?
+	// TODO Check if this works with version 4.4 or 4.5
+#if (QT_VERSION_CHECK(4,6,0))
+	setFlag(QGraphicsItem::ItemSendsScenePositionChanges);
+#endif
 
 	this->fAdditionalHandles = false;
 	this->fSizingSteps = 5;
