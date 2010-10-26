@@ -24,8 +24,8 @@ namespace atuml {
  * Different states a resizeable item can take.
  */
 enum ResizingState {
-	STATE_NOTHING, /**< Normal state, no resize operation is currently happening. */
-	STATE_RESIZE
+	StateNothing, /**< Normal state, no resize operation is currently happening. */
+	StateResize
 /**< Currently a resize operation is handled. */
 };
 
@@ -128,7 +128,20 @@ protected:
 	 */
 	void trackConnections();
 
-	// def paint(self, painter, option, widget = None):
+	/**
+	 * This method is called when the mouse button is pressed down.
+	 * If click is in handle position and left button then
+	 * current position and rect are saved and internal state is changed to
+	 * resizing.
+	 */
+	virtual void mousePressEvent(QGraphicsSceneMouseEvent* event);
+
+	/**
+	 * This method is called after releasing the mouse button.
+     * If we were in resizing state, restore state and
+     * adjust final rectangle, i.e. topLeft == (0,0)
+	 */
+	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent* event);
 
 	// def mousePressEvent(self, event)
 
@@ -200,6 +213,11 @@ private:
 	 * List holding all the connections.
 	 */
 	QList<Connection> fConnections;
+
+	/**
+	 * Holds the point where the mouse button was pressed.
+	 */
+	QPointF pressEventPosition;
 };
 
 }

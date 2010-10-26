@@ -34,7 +34,6 @@ ClassGraphicsItem::~ClassGraphicsItem() {
 
 QRectF ClassGraphicsItem::boundingRect() const {
 	QRectF m = rect();
-	m.adjust(-5,-5,5,5);
 	m.translate(-rect().center());
 
 	return m;
@@ -74,13 +73,13 @@ void ClassGraphicsItem::paint(QPainter* painter,
 
 QPainterPath ClassGraphicsItem::shape() const {
 	QPainterPath p;
-	p.addRoundRect(rect(),25,25);
+	p.addRect(rect());
 	return p;
 }
 
 QVariant ClassGraphicsItem::itemChange(GraphicsItemChange change,
 		const QVariant& value) {
-	return QGraphicsItem::itemChange(change, value);
+	return BasicItem::itemChange(change, value);
 }
 
 }
