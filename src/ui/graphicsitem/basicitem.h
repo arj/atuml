@@ -2,44 +2,48 @@
  * This file is part of the Atuml project.
  * http://www.bitflipper.de/atuml
  *
- * resizeableitem.h
+ * basicitem.h
  *
- *  Created on: 06.09.2010
+ *  Created on: 26.10.2010
  *      Author: Robert Jakob
  */
 
-#ifndef _RESIZEABLEITEM_H_
-#define _RESIZEABLEITEM_H_
+#ifndef _BASICITEM_H_
+#define _BASICITEM_H_
 
+#include <QRectF>
 #include <QString>
 #include <QGraphicsItem>
 #include <QBrush>
-#include <QRectF>
 #include <QList>
-#include "connectableitem.h"
+#include "../../exceptions.h"
 
 namespace atuml {
 
 /**
  * Different states a resizeable item can take.
  */
-enum ResizeableItemState {
+enum ResizingState {
 	STATE_NOTHING, /**< Normal state, no resize operation is currently happening. */
 	STATE_RESIZE
 /**< Currently a resize operation is handled. */
 };
 
-/**
- * Base class for a resizable item.
- */
-class ResizeableItem: public ConnectableItem {
+class Connection {
 public:
+	void trackNodes() {
+	}
 
-	/**
-	 * Constructor which create a new ResizeableItem.
-	 */
-	ResizeableItem(const QRectF& rect, QGraphicsItem* parent = 0, bool additionalHandles = true,
-			int sizingSteps = 1, int boxsize = 8);
+	bool operator==(const Connection&) const {
+		return false; // Template only
+	}
+};
+
+class BasicItem: public QGraphicsRectItem {
+public:
+	BasicItem(QGraphicsItem* parent = 0);
+
+	virtual ~BasicItem();
 
 	/**
 	 * The paint method draws the handles on the item.
@@ -50,7 +54,25 @@ public:
 	 * @param option The current state of the graphic item
 	 * @param widget The widget that is beiing painted on.
 	 */
-	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
+	virtual void paint(QPainter *painter,
+			const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
+
+	/**
+	 * Adds a new connection to the item.
+	 * If the same connection is added again, a
+	 * DoubleEntryException is thrown.
+	 *
+	 * @param connection The connection to add.
+	 */
+	void addConnection(Connection connection);
+
+	/**
+	 * Removes a connection from the item.
+	 * If the connection does not exist, nothing happens.
+	 *
+	 * @param connection The connection to remove.
+	 */
+	void removeConnection(Connection connection);
 
 	// **** getter and setter **** //
 
@@ -83,6 +105,22 @@ protected:
 	 */
 	void updateHandles(const QRectF& rect);
 
+	/**
+	 * ItemChange event which is automatically triggered if the item
+	 * is changed somehow.
+	 * This maybe position, size and other things.
+	 *
+	 * @param change The parameter of the item changing.
+	 * @param value The new value of the parameter.
+	 */
+	void ItemChange(GraphicsItemChange change, const QVariant& value);
+
+	/**
+	 * Track connections informs all connected connections of position
+	 * updates.
+	 */
+	void trackConnections();
+
 	// def paint(self, painter, option, widget = None):
 
 	// def mousePressEvent(self, event)
@@ -97,7 +135,7 @@ private:
 	/**
 	 * Internal variable for the current state of the resizable item.
 	 */
-	ResizeableItemState currentState;
+	ResizingState currentState;
 
 	/**
 	 * Internal variable corresponding to the handle selected during a
@@ -138,8 +176,13 @@ private:
 	 * handles.
 	 */
 	QRectF handlePos[12];
+
+	/**
+	 * List holding all the connections.
+	 */
+	QList<Connection> fConnections;
 };
 
 }
 
-#endif /* _RESIZEABLEITEM_H_ */
+#endif /* _BASICITEM_H_ */

@@ -17,11 +17,13 @@ namespace uml {
 namespace ui {
 
 ClassGraphicsItem::ClassGraphicsItem(const QString name, QGraphicsItem* parent) :
-	uml::Class(name), ResizeableItem(QRectF(10,10,200,200),parent) {
+	uml::Class(name), BasicItem(parent) {
 
 	setFlags(ItemIsMovable | ItemIsSelectable);
 
-	myRect = QRectF(10, 10, 200, 200);
+	this->setRect(QRectF(10, 10, 200, 200));
+
+	myRect = this->rect();
 	myRect.translate(-myRect.center());
 	setPos(10, 110);
 }
@@ -66,7 +68,7 @@ void ClassGraphicsItem::paint(QPainter* painter,
 
 	painter->drawText(pRect.translated(0,10), Qt::AlignHCenter, this->name());
 
-	ResizeableItem::paint(painter, options, widget);
+	BasicItem::paint(painter, options, widget);
 }
 
 QPainterPath ClassGraphicsItem::shape() const {

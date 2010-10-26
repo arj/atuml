@@ -16,7 +16,7 @@
 #include <QStyleOptionGraphicsItem>
 #include <QWidget>
 #include "../../uml/class.h"
-#include "resizeableitem.h"
+#include "basicitem.h"
 
 namespace atuml {
 
@@ -24,7 +24,7 @@ namespace uml {
 
 namespace ui {
 
-class ClassGraphicsItem: public uml::Class, public atuml::ResizeableItem {
+class ClassGraphicsItem: public uml::Class, public atuml::BasicItem {
 public:
 	ClassGraphicsItem(const QString name, QGraphicsItem* parent = 0);
 	virtual ~ClassGraphicsItem();

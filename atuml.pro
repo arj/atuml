@@ -7,7 +7,7 @@ FORMS = src/ui/mainwindow.ui
 
 # QT += opengl
 # Input
-HEADERS += src/ui/graphicsitem/connectableitem.h \
+HEADERS += src/ui/graphicsitem/basicitem.h \
     src/ui/advancedgraphicsscene.h \
     src/exceptions.h \
     src/globals.h \
@@ -28,10 +28,8 @@ HEADERS += src/ui/graphicsitem/connectableitem.h \
     src/uml/helpers/classdiagramprinter.h \
     src/atuml.h \
     src/atumlsettingsprovider.h \
-    src/uml/umldiagram.h \
-    src/ui/graphicsitem/resizeableitem.h
-
-SOURCES += src/ui/graphicsitem/connectableitem.cpp \
+    src/uml/umldiagram.h
+SOURCES += src/ui/graphicsitem/basicitem.cpp \
     src/ui/advancedgraphicsccene.cpp \
     src/globals.cpp \
     src/exceptions.cpp \
@@ -52,7 +50,6 @@ SOURCES += src/ui/graphicsitem/connectableitem.cpp \
     src/main.cpp \
     src/atumlsettingsprovider.cpp \
     src/uml/umldiagram.cpp \
-    src/ui/graphicsitem/resizeableitem.cpp \
     src/providers/umldiagramprovider.cpp
 
 # - is necessary for nice filename, i.e
