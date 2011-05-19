@@ -137,6 +137,13 @@ protected:
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent* event);
 
 	/**
+	 * This method is called when the mouse is moved.
+	 * If the internal state is resizing, then the item is resized
+	 * according to the current mouse position.
+	 */
+	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent* event);
+
+	/**
 	 * This method is called after releasing the mouse button.
      * If we were in resizing state, restore state and
      * adjust final rectangle, i.e. topLeft == (0,0)
@@ -218,6 +225,14 @@ private:
 	 * Holds the point where the mouse button was pressed.
 	 */
 	QPointF pressEventPosition;
+
+	/**
+	 * Rectangle position at mouse press event.
+	 * (Position before movements happen).
+	 * This is only valid between mouse press and mouse
+	 * release events.
+	 */
+	QRectF oldRect;
 };
 
 }

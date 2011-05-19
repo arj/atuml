@@ -143,7 +143,7 @@ void BasicItem::mousePressEvent(QGraphicsSceneMouseEvent* event) {
 				if (r.contains(this->pressEventPosition)) {
 					this->currentState = StateResize;
 					this->activeHandle = (Handle) i;
-					// TODO this->oldRect this->rect();
+					this->oldRect = this->rect();
 					// TODO this->oldPos this->pos();
 					this->update();
 					break;
@@ -161,24 +161,88 @@ void BasicItem::mousePressEvent(QGraphicsSceneMouseEvent* event) {
 	QGraphicsRectItem::mousePressEvent(event);
 }
 
+void BasicItem::mouseMoveEvent(QGraphicsSceneMouseEvent* event) {
+	if (this->currentState == StateResize ){
+		QPointF distance = event->scenePos() - this->pressEventPosition;
+
+		QRectF rect = this->rect();
+
+		if (this->activeHandle == 0) {
+			rect.setTopLeft(this->oldRect.topLeft() + distance);
+		}
+
+		this->setRect(rect);
+	} else {
+		// This ensures normal movement of the items.
+		QGraphicsRectItem::mouseMoveEvent(event);
+	}
+
+	/* Original Python prototype code:
+	 * if self.__state == SizeableItem.STATE_NOTHING:
+            QtGui.QGraphicsRectItem.mouseMoveEvent(self,event)
+            return
+        elif self.__state == SizeableItem.STATE_RESIZE:
+
+            # calculate the distance with
+            distance = event.scenePos() - self.pressPosition
+
+            # Continuous or discrete stepping.
+            if self.sizingSteps > 1:
+                steps = math.floor(distance.x() / self.sizingSteps)
+                distance.setX(steps * self.sizingSteps)
+                steps = math.floor(distance.y() / self.sizingSteps)
+                distance.setY(steps * self.sizingSteps)
+
+            rect = self.rect()
+
+            # Different resizing operations according to selected handle.
+            if self.__activeHandle == 0:
+                rect.setTopLeft(self.__oldRect.topLeft() + distance)
+            elif self.__activeHandle == 1:
+                rect.setTopRight(self.__oldRect.topRight() + distance)
+            elif self.__activeHandle == 2:
+                rect.setBottomLeft(self.__oldRect.bottomLeft() + distance)
+            elif self.__activeHandle == 3:
+                rect.setBottomRight(self.__oldRect.bottomRight() + distance)
+            elif self.additionalHandles:
+                if self.__activeHandle == 4:
+                    rect.setLeft(self.__oldRect.left() + distance.x())
+                elif self.__activeHandle == 5:
+                    rect.setRight(self.__oldRect.right() + distance.x())
+                elif self.__activeHandle == 6:
+                    rect.setTop(self.__oldRect.top() + distance.y())
+                elif self.__activeHandle == 7:
+                    rect.setBottom(self.__oldRect.bottom() + distance.y())
+
+            # A minimum size must be preserved
+            if rect.width() < self.boxsize * 2:
+                rect.setWidth(self.boxsize * 2)
+
+            if rect.height() < self.boxsize * 2:
+                rect.setHeight(self.boxsize * 2)
+
+            self.setRect(rect)
+        else:
+            QtGui.QGraphicsRectItem.mouseMoveEvent(self,event)
+	 */
+}
+
 void BasicItem::mouseReleaseEvent(QGraphicsSceneMouseEvent* event) {
 
 	if (event->button() == Qt::LeftButton) {
 		this->currentState = StateNothing;
 		this->activeHandle = None;
 		this->update();
-	}
+		QRectF rect = this->rect();
 
-	/* TODO
-	            # Now we are adjusting the position to the top left and the rectangle
-	            # Such that rect.topLeft is always 0,0
-	            rect = self.rect()
-	            if rect.left() != 0 or rect.top() != 0:
-	                distance = rect.topLeft()
-	                newPos = self.pos() + distance
-	                newRect = rect.adjusted(-distance.x(),-distance.y(),-distance.x(),-distance.y())
-	                self.setPos(newPos)
-	                self.setRect(newRect)*/
+		if (rect.left() != 0 || rect.top() != 0) {
+			QPointF distance = rect.topLeft();
+			QPointF newPos = this->pos() + distance;
+			rect.adjust(-distance.x(),-distance.y(),-distance.x(),-distance.y());
+			this->setPos(newPos);
+			this->setRect(rect);
+		}
+	}
 
 	QGraphicsRectItem::mouseReleaseEvent(event);
 }
