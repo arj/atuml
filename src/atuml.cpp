@@ -29,15 +29,15 @@ int Atuml::run()
 		splashscreen->show();
 	}
 
-    /*showMessage("Initialization");*/
+    showMessage("Initialization");
     application.processEvents();
 
     // wait for 2 sec. One should see the splash screen ;)
     // TODO Remove this for releases
-    //SleeperThread::msleep(3000);
+    SleeperThread::msleep(3000);
 
-    mainwindow->showMaximized();
     splashscreen->finish(mainwindow);
+    mainwindow->showMaximized();
 
     return application.exec();
 }

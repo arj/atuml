@@ -5,6 +5,8 @@ INCLUDEPATH += .
 RESOURCES += src/resources/atuml.qrc
 FORMS = src/ui/mainwindow.ui
 
+QMAKE_CXXFLAGS += -std=c++11
+
 # QT += opengl
 # Input
 HEADERS += src/ui/graphicsitem/basicitem.h \

@@ -9,46 +9,74 @@
  */
 
 #include "attribute.h"
+
 #include <QApplication>
-#include "../exceptions.h"
+#include <QString>
+#include <QStringList>
+#include <QVariant>
+#include <QDebug>
+
+#include <memory>
+
 #include "visibility.h"
+#include "multiplicity.h"
+#include "../exceptions.h"
 
 namespace atuml {
 
 namespace uml {
 
-Attribute::Attribute(const QString name) {
+struct Attribute::Pimpl {
+    /**
+     * Name of the class. Must not be empty!
+     */
+    QString name;
 
-	if (name.isEmpty()) {
-		throw atuml::InvalidParameterException(qApp->translate("Exception",
-				"Attribute does not allow an empty name."));
-	}
+    /**
+     * The visibility of the attribute.
+     * As it is a pointer it must be initialized in the constructor(s).
+     */
+    Visibility visibility;
 
-	fName = name;
-	fVisibility = new Public();
+    /**
+     * Type of the attribute. Currently, this is represented as
+     * a string, but maybe this should change to a specific C++ class as
+     * uml classes can be type of an attribute, too.
+     */
+    QString type;
+
+    /**
+     * The multiplicity of the attribute.
+     */
+    Multiplicity multiplicity;
+
+    /**
+     * The default value of the attribute.
+     */
+    QVariant defaultValue;
+
+    /**
+     * The list of properties of the attribute.
+     * The following properties are defined in uml:
+     * - ordered The data is returned ordered.
+     * - read-only The attribute is read only.
+     */
+    QStringList properties;
+};
+
+Attribute::Attribute(const QString name) : impl_(std::make_shared<Pimpl>()) {
+
+    if (name.isEmpty()) {
+        throw atuml::InvalidParameterException(qApp->translate("Exception",
+                "Attribute does not allow an empty name."));
+    }
+
+    impl_->name = name;
+    impl_->visibility = Visibility::PUBLIC;
 }
 
-Attribute::Attribute(const Attribute& copy) {
-	this->fVisibility = VisibilityFactory::createVisibility(copy.fVisibility->string());
-	this->fName = copy.fName;
-	this->fType = copy.fType;
-	this->fMultiplicity = copy.fMultiplicity;
-	this->fDefaultValue = copy.fDefaultValue;
-	this->fProperties = copy.fProperties;
-}
-
-Attribute::~Attribute() {
-	delete fVisibility;
-}
-
-void Attribute::setVisibility(Visibility* visibility) {
-	if (visibility == 0) {
-		throw atuml::InvalidParameterException(qApp->translate("Exception",
-				"Parameter is null."));
-	}
-
-	delete fVisibility;
-	fVisibility = VisibilityFactory::createVisibility(visibility->string());
+void Attribute::setVisibility(Visibility visibility) {
+    impl_->visibility = visibility;
 }
 
 void Attribute::setName(const QString name) {
@@ -57,58 +85,62 @@ void Attribute::setName(const QString name) {
 				"Attribute does not allow an empty name."));
 	}
 
-	fName = name;
+    impl_->name = name;
 }
 
 void Attribute::setType(const QString type) {
-	fType = type;
+    impl_->type = type;
 }
 
 void Attribute::setMultiplicity(const Multiplicity multiplicity) {
-	fMultiplicity = multiplicity;
+    impl_->multiplicity = multiplicity;
 }
 
 void Attribute::setDefaultValue(const QVariant defaultValue) {
-	fDefaultValue = defaultValue;
+    impl_->defaultValue = defaultValue;
 }
 
 void Attribute::addProperty(const QString property) {
 	if (property.isEmpty()) {
 		throw atuml::InvalidParameterException(qApp->translate("Exception",
 				"Attribute does not allow an empty property name to be added."));
-	}
+    }
 
-	if (!fProperties.contains(property)) {
-		fProperties.append(property);
+    if (!impl_->properties.contains(property)) {
+        impl_->properties.append(property);
 	}
+}
+
+bool Attribute::operator==(const Attribute &other) const {
+    return this->impl_->name == other.impl_->name;
 }
 
 void Attribute::removeProperty(const QString property) {
-	fProperties.removeAll(property);
+    impl_->properties.removeAll(property);
 }
 
-const Visibility* Attribute::visibility() const {
-	return fVisibility;
+Visibility Attribute::visibility() const {
+    return impl_->visibility;
 }
 
 QString Attribute::name() const {
-	return fName;
+    return impl_->name;
 }
 
 QString Attribute::type() const {
-	return fType;
+    return impl_->type;
 }
 
 Multiplicity Attribute::multiplicity() const {
-	return fMultiplicity;
+    return impl_->multiplicity;
 }
 
 QVariant Attribute::defaultValue() const {
-	return fDefaultValue;
+    return impl_->defaultValue;
 }
 
 const QStringList Attribute::properties() const {
-	return fProperties;
+    return impl_->properties;
 }
 
 }

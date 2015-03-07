@@ -8,17 +8,29 @@
  *      Author: Robert Jakob
  */
 
+#include <QString>
+#include <QApplication>
+#include "../exceptions.h"
 #include "visibility.h"
-
-/*
- * Just for completeness.
- * This file is not needed as the classes
- * are small and everything is implemented inline.
- */
 
 namespace atuml {
 
 namespace uml {
+
+Visibility makeVisibility(const QString& code) {
+    if (code == "+") {
+        return Visibility::PUBLIC;
+    } else if (code == "#") {
+        return Visibility::PROTECTED;
+    } else if (code == "-") {
+        return Visibility::PRIVATE;
+    } else if (code == "~") {
+        return Visibility::PACKAGE;
+    }
+
+    QString msg = QString("Unknown parameter for visibility construction \"%1\"").arg(code);
+    throw atuml::InvalidParameterException(qApp->translate("Exception", qPrintable(msg)));
+}
 
 }
 

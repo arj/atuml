@@ -15,27 +15,15 @@ namespace atuml {
 
 namespace uml {
 
-Method::Method(const QString name) {
+Method::Method(const QString name) : fName(name), fVisibility(Visibility::PUBLIC) {
 
 	if (name.isEmpty()) {
 		throw atuml::InvalidParameterException(qApp->translate("Exception",
 				"Method does not allow an empty name."));
 	}
-
-	fName = name;
-	fVisibility = new Public();
-}
-
-Method::Method(const Method& copy) {
-	this->fVisibility = VisibilityFactory::createVisibility(copy.fVisibility->string());
-	this->fName = copy.fName;
-	this->fReturnType = copy.fReturnType;
-	this->fParameter = copy.fParameter;
-	this->fProperties = copy.fProperties;
 }
 
 Method::~Method() {
-	delete fVisibility;
 }
 
 bool Method::operator==(const Method &other) const {
@@ -51,16 +39,8 @@ void Method::setName(const QString name) {
 	fName = name;
 }
 
-void Method::setVisibility(const Visibility* visibility) {
-	if (visibility == 0) {
-		throw atuml::InvalidParameterException(qApp->translate("Exception",
-				"Parameter visibility is null."));
-	}
-
-	// Deletes the old visibility and create a copy of the given one base
-	// on the string representation.
-	delete fVisibility;
-	fVisibility = VisibilityFactory::createVisibility(visibility->string());
+void Method::setVisibility(Visibility visibility) {
+    fVisibility = visibility;
 }
 
 void Method::addParameter(const Parameter parameter) {
@@ -95,7 +75,7 @@ void Method::removeProperty(const QString property) {
 	fProperties.removeOne(property);
 }
 
-const Visibility* Method::visibility() const {
+Visibility Method::visibility() const {
 	return fVisibility;
 }
 

@@ -11,16 +11,18 @@
 #ifndef _ATTRIBUTE_H_
 #define _ATTRIBUTE_H_
 
-#include <QString>
-#include <QStringList>
-#include <QVariant>
-#include <QDebug>
-#include "visibility.h"
-#include "multiplicity.h"
+#include <memory>
+
+class QString;
+class QVariant;
+class QStringList;
 
 namespace atuml {
 
 namespace uml {
+
+class Multiplicity;
+enum class Visibility;
 
 /**
  * This class represents an attribute (property) of a uml class.
@@ -36,25 +38,14 @@ public:
 	 * @param name The name of the new attribute
 	 *
 	 */
-	Attribute(const QString name);
-
-	/**
-	 * Copy constructor.
-	 * Copies all the private referenced elements.
-	 */
-	Attribute(const Attribute& copy);
-
-	/**
-	 * Deconstructor
-	 */
-	virtual ~Attribute();
+    explicit Attribute(const QString name);
 
 	/**
 	 * Setter for visibility.
 	 * Throws InvalidParameterException if parameter is null.
 	 * @param visibility The new visibility to set.
 	 */
-	void setVisibility(Visibility* visibility);
+    void setVisibility(Visibility visibility);
 
 	/**
 	 * Setter for name.
@@ -95,9 +86,7 @@ public:
 	 * Comparison of Attribute objects is done by comparing
 	 * their name. This should be sufficient (inside uml classes!)
 	 */
-	bool operator==(const Attribute &other) const {
-		return this->fName == other.fName;
-	}
+    bool operator==(const Attribute &other) const;
 
 	/**
 	 * Returns the visibility of the attribute.
@@ -106,7 +95,7 @@ public:
 	 *
 	 * @return The visibility.
 	 */
-	const Visibility* visibility() const;
+    Visibility visibility() const;
 
 	/**
 	 * Returns the name of the attribute.
@@ -146,41 +135,8 @@ public:
 	const QStringList properties() const;
 
 private:
-	/**
-	 * The visibility of the attribute.
-	 * As it is a pointer it must be initialized in the constructor(s).
-	 */
-	Visibility* fVisibility;
-
-	/**
-	 * Name of the class. Must not be empty!
-	 */
-	QString fName;
-
-	/**
-	 * Type of the attribute. Currently, this is represented as
-	 * a string, but maybe this should change to a specific C++ class as
-	 * uml classes can be type of an attribute, too.
-	 */
-	QString fType;
-
-	/**
-	 * The multiplicity of the attribute.
-	 */
-	Multiplicity fMultiplicity;
-
-	/**
-	 * The default value of the attribute.
-	 */
-	QVariant fDefaultValue;
-
-	/**
-	 * The list of properties of the attribute.
-	 * The following properties are defined in uml:
-	 * - ordered The data is returned ordered.
-	 * - read-only The attribute is read only.
-	 */
-	QStringList fProperties;
+    struct Pimpl;
+    std::shared_ptr<Pimpl> impl_;
 };
 
 }

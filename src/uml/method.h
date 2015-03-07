@@ -35,12 +35,6 @@ public:
 	Method(const QString name);
 
 	/**
-	 * Copy constructor.
-	 * Copies all the private referenced elements.
-	 */
-	Method(const Method& copy);
-
-	/**
 	 * Destructor which removes created class instances.
 	 */
 	virtual ~Method();
@@ -68,7 +62,7 @@ public:
 	 *
 	 * @param visibility The new visibility.
 	 */
-	void setVisibility(const Visibility* visibility);
+    void setVisibility(const Visibility visibility);
 
 	/**
 	 * Adds a new parameter to the method.
@@ -126,7 +120,7 @@ public:
 	 *
 	 * @return Returns a const visibility.
 	 */
-	const Visibility* visibility() const;
+    Visibility visibility() const;
 
 	/**
 	 * Getter for the parameters.
@@ -152,16 +146,15 @@ public:
 	const QStringList properties() const;
 
 private:
+    /**
+     * The name of the method. Must not be empty.
+     */
+    QString fName;
 
 	/**
 	 * The visibility of the method. Must not be null.
 	 */
-	Visibility* fVisibility;
-
-	/**
-	 * The name of the method. Must not be empty.
-	 */
-	QString fName;
+    Visibility fVisibility;
 
 	/**
 	 * The list of parameters.
