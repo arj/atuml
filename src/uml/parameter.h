@@ -11,14 +11,17 @@
 #ifndef _PARAMETER_H_
 #define _PARAMETER_H_
 
-#include <QString>
-#include <QStringList>
-#include <QVariant>
-#include "multiplicity.h"
+#include <memory>
+
+class QString;
+class QStringList;
+class QVariant;
 
 namespace atuml {
 
 namespace uml {
+
+class Multiplicity;
 
 /**
  * Class representing a parameter of an operation (method) of a class.
@@ -27,8 +30,10 @@ namespace uml {
  */
 class Parameter {
 public:
-	enum Direction {
-		in, out, inout
+    enum class Direction {
+        IN,
+        OUT,
+        INOUT
 	};
 
 	/**
@@ -129,37 +134,8 @@ public:
 	const QStringList properties() const;
 
 private:
-	/**
-	 * The direction of the parameter.
-	 */
-	Direction fDirection;
-
-	/**
-	 * The name of the parameter.
-	 */
-	QString fName;
-
-	/**
-	 * Type of the parameter. Currently, this is represented as
-	 * a string, but maybe this should change to a specific C++ class as
-	 * uml classes can be type of an parameter, too.
-	 */
-	QString fType;
-
-	/**
-	 * The multiplicity of the parameter.
-	 */
-	Multiplicity fMultiplicity;
-
-	/**
-	 * The default value of the parameter.
-	 */
-	QVariant fDefaultValue;
-
-	/**
-	 * The list of properties for the parameter.
-	 */
-	QStringList fProperties;
+    struct Pimpl;
+    std::shared_ptr<Pimpl> impl_;
 };
 
 }

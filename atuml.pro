@@ -7,7 +7,7 @@ FORMS = src/ui/mainwindow.ui
 
 QMAKE_CXXFLAGS += -std=c++11
 
-# QT += opengl
+QT += widgets
 # Input
 HEADERS += src/ui/graphicsitem/basicitem.h \
     src/ui/advancedgraphicsscene.h \

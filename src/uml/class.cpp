@@ -1,43 +1,72 @@
 #include "class.h"
 #include "../exceptions.h"
 
+#include <QApplication>
+
 namespace atuml {
 
 namespace uml {
 
-Class::Class(const QString name) : fAbstract(false), fActive(false) {
+struct Class::Pimpl {
+
+    Pimpl() : abstract(false), active(false) {}
+
+    /**
+     * The name of the class.
+     */
+    QString name;
+
+    /**
+     * The abstractness property of the class.
+     */
+    bool abstract;
+
+    /**
+     * The activity property of the class.
+     */
+    bool active;
+
+    /**
+     * The list of attributes for the class.
+     */
+    QList<Attribute> attributes;
+
+    /**
+     * The list of methods for the class.
+     */
+    QList<Method> methods;
+};
+
+Class::Class(const QString name) : impl_(std::make_shared<Pimpl>()) {
 	setName(name);
 }
 
-Class::~Class() {
-}
-
 void Class::addMethod(Method method) {
-	if (!fMethods.contains(method)) {
-		fMethods.append(method);
+    if (!impl_->methods.contains(method)) {
+        impl_->methods.append(method);
 	}
 }
 
 void Class::addAttribute(Attribute attribute) {
-	if (!fAttributes.contains(attribute)) {
-		fAttributes.append(attribute);
+    if (!impl_->attributes.contains(attribute)) {
+        impl_->attributes.append(attribute);
 	}
 }
 
 void Class::removeMethod(Method method) {
-	fMethods.removeOne(method);
+    impl_->methods.removeOne(method);
 }
 
 void Class::removeAttribute(Attribute attribute) {
-	fAttributes.removeOne(attribute);
+    impl_->attributes.removeOne(attribute);
 }
 
 const QList<Method> Class::methods() const {
-	return fMethods;
+    return impl_->methods;
 }
 
 const QList<Attribute> Class::attributes() const {
-	return fAttributes;
+    return impl_->attributes;
 }
 
 void Class::setName(const QString name) {
@@ -46,27 +75,27 @@ void Class::setName(const QString name) {
 				"Class does not allow an empty name."));
 	}
 
-	fName = name;
+    impl_->name = name;
 }
 
 void Class::setAbstract(bool value) {
-	fAbstract = value;
+    impl_->abstract = value;
 }
 
 void Class::setActive(bool value) {
-	fActive = value;
+    impl_->active = value;
 }
 
 bool Class::abstract() const {
-	return fAbstract;
+    return impl_->abstract;
 }
 
 QString Class::name() const {
-	return fName;
+    return impl_->name;
 }
 
 bool Class::active() const {
-	return fActive;
+    return impl_->active;
 }
 
 }

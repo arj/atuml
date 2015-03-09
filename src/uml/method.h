@@ -11,15 +11,18 @@
 #ifndef _METHOD_H_
 #define _METHOD_H_
 
-#include <QString>
-#include <QStringList>
+#include <memory>
 #include <QList>
-#include "visibility.h"
-#include "parameter.h"
+
+class QString;
+class QStringList;
 
 namespace atuml {
 
 namespace uml {
+
+class Parameter;
+enum class Visibility;
 
 /**
  * The Method class represents an uml method or operation which is part of a
@@ -32,12 +35,7 @@ public:
 	 *
 	 * @oaram name The name of the method to create-
 	 */
-	Method(const QString name);
-
-	/**
-	 * Destructor which removes created class instances.
-	 */
-	virtual ~Method();
+    explicit Method(const QString name);
 
 	/**
 	 * Comparison of Method objects is done by comparing
@@ -146,36 +144,8 @@ public:
 	const QStringList properties() const;
 
 private:
-    /**
-     * The name of the method. Must not be empty.
-     */
-    QString fName;
-
-	/**
-	 * The visibility of the method. Must not be null.
-	 */
-    Visibility fVisibility;
-
-	/**
-	 * The list of parameters.
-	 */
-	QList<Parameter> fParameter;
-
-	/**
-	 * The return type of the method.
-	 * Currently, this is represented as
-	 * a string, but maybe this should change to a specific C++ class as
-	 * uml classes can be type of a method, too.
-	 */
-	QString fReturnType;
-
-	/**
-	 * The properties of a method. The following properties are defined in uml:
-	 * - ordered The data is returned ordered.
-	 * - redefines <operation> overwrite the operation <operation>
-	 * - read-only
-	 */
-	QStringList fProperties;
+    struct Pimpl;
+    std::shared_ptr<Pimpl> impl_;
 };
 
 }

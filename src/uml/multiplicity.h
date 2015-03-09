@@ -36,9 +36,7 @@ public:
 	/**
 	 * Create a new object with default settings to (1,1).
 	 */
-	Multiplicity(quint32 min = 1, quint32 max = 1) {
-		set(min, max);
-	}
+    Multiplicity(quint32 min = 1, quint32 max = 1) : minimum_(min), maximum_(max) {}
 
 	/**
 	 * Comparison of multiplicity objects is done by comparing
@@ -46,8 +44,8 @@ public:
 	 * otherwise they are not.
 	 */
 	bool operator==(const Multiplicity &other) const {
-		return this->fminimum == other.fminimum && this->fmaximum
-				== other.fmaximum;
+        return this->minimum_ == other.minimum_ && this->maximum_
+                == other.maximum_;
 	}
 
 	/**
@@ -61,14 +59,14 @@ public:
 	 * Getter for minimum value.
 	 */
 	quint32 minimum() const {
-		return fminimum;
+        return minimum_;
 	}
 
 	/**
 	 * Getter for maximum value.
 	 */
 	quint32 maximum() const {
-		return fmaximum;
+        return maximum_;
 	}
 
 	/**
@@ -92,20 +90,20 @@ public:
 					"Minimum must be smaller or equal than maximum."));
 		}
 
-		fminimum = minimum;
-		fmaximum = maximum;
+        minimum_ = minimum;
+        maximum_ = maximum;
 	}
 
 private:
 	/**
 	 * The minimum value of the interval.
 	 */
-	quint32 fminimum;
+    quint32 minimum_;
 
 	/**
 	 * The maximum value of the interval.
 	 */
-	quint32 fmaximum;
+    quint32 maximum_;
 };
 
 }

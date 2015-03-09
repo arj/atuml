@@ -12,10 +12,23 @@
 #include <QApplication>
 #include "../exceptions.h"
 #include "visibility.h"
+#include <exception>
+#include <cassert>
 
 namespace atuml {
 
 namespace uml {
+
+QString visibilityToString(const Visibility &v) {
+    switch (v) {
+    case Visibility::PUBLIC: return "+";
+    case Visibility::PROTECTED: return "#";
+    case Visibility::PRIVATE: return "-";
+    case Visibility::PACKAGE: return "~";
+    default: Q_ASSERT_X(false, Q_FUNC_INFO, "Invalid enumeration value");
+        throw std::logic_error("Invalid enumeration value for visibility");
+    }
+}
 
 Visibility makeVisibility(const QString& code) {
     if (code == "+") {

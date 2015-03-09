@@ -11,7 +11,9 @@
 #ifndef _ADVANCEDGRAPHICSSCENE_H_
 #define _ADVANCEDGRAPHICSSCENE_H_
 
-#include <Qt/QtGui>
+#include <QGraphicsScene>
+#include <QPainter>
+#include <QRectF>
 
 class AdvancedGraphicsScene : public QGraphicsScene {
 public:

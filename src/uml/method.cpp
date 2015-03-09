@@ -9,13 +9,55 @@
  */
 
 #include "method.h"
+#include "parameter.h"
+#include "visibility.h"
 #include "../exceptions.h"
+
+#include <QString>
+#include <QStringList>
+#include <QApplication>
 
 namespace atuml {
 
 namespace uml {
 
-Method::Method(const QString name) : fName(name), fVisibility(Visibility::PUBLIC) {
+struct Method::Pimpl {
+
+    Pimpl(const QString name) : name(name), visibility(Visibility::PUBLIC) {}
+
+    /**
+     * The name of the method. Must not be empty.
+     */
+    QString name;
+
+    /**
+     * The visibility of the method. Must not be null.
+     */
+    Visibility visibility;
+
+    /**
+     * The list of parameters.
+     */
+    QList<Parameter> parameter;
+
+    /**
+     * The return type of the method.
+     * Currently, this is represented as
+     * a string, but maybe this should change to a specific C++ class as
+     * uml classes can be type of a method, too.
+     */
+    QString returnType;
+
+    /**
+     * The properties of a method. The following properties are defined in uml:
+     * - ordered The data is returned ordered.
+     * - redefines <operation> overwrite the operation <operation>
+     * - read-only
+     */
+    QStringList properties;
+};
+
+Method::Method(const QString name) : impl_(std::make_shared<Pimpl>(name)) {
 
 	if (name.isEmpty()) {
 		throw atuml::InvalidParameterException(qApp->translate("Exception",
@@ -23,11 +65,8 @@ Method::Method(const QString name) : fName(name), fVisibility(Visibility::PUBLIC
 	}
 }
 
-Method::~Method() {
-}
-
 bool Method::operator==(const Method &other) const {
-	return this->fName == other.fName;
+    return this->impl_->name == other.impl_->name;
 }
 
 void Method::setName(const QString name) {
@@ -36,29 +75,29 @@ void Method::setName(const QString name) {
 				"Method does not allow an empty name."));
 	}
 
-	fName = name;
+    impl_->name = name;
 }
 
 void Method::setVisibility(Visibility visibility) {
-    fVisibility = visibility;
+    impl_->visibility = visibility;
 }
 
 void Method::addParameter(const Parameter parameter) {
-	if (fParameter.contains(parameter)) {
+    if (impl_->parameter.contains(parameter)) {
 		throw new atuml::DoubleEntryException(qApp->translate("Exception",
 				"Parameter already exists."));
 	}
 
-	fParameter.append(parameter);
+    impl_->parameter.append(parameter);
 }
 
 void Method::removeParameter(const Parameter parameter) {
 	// Their should not be more than one.
-	fParameter.removeOne(parameter);
+    impl_->parameter.removeOne(parameter);
 }
 
 void Method::setReturnType(const QString returnType) {
-	fReturnType = returnType;
+    impl_->returnType = returnType;
 }
 
 void Method::addProperty(const QString property) {
@@ -67,32 +106,32 @@ void Method::addProperty(const QString property) {
 					"Method does not allow an empty property name to be added."));
 	}
 
-	fProperties.append(property);
+    impl_->properties.append(property);
 }
 
 void Method::removeProperty(const QString property) {
 	// Their should not be more than one.
-	fProperties.removeOne(property);
+    impl_->properties.removeOne(property);
 }
 
 Visibility Method::visibility() const {
-	return fVisibility;
+    return impl_->visibility;
 }
 
 QString Method::returnType() const {
-	return fReturnType;
+    return impl_->returnType;
 }
 
 const QStringList Method::properties() const {
-	return fProperties;
+    return impl_->properties;
 }
 
 QString Method::name() const {
-	return fName;
+    return impl_->name;
 }
 
 const QList<Parameter> Method::parameter() const {
-	return fParameter;
+    return impl_->parameter;
 }
 
 }

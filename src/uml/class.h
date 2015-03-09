@@ -11,23 +11,27 @@
 #ifndef _CLASS_H_
 #define _CLASS_H_
 
-#include <QObject>
-#include <QString>
 #include <QList>
 #include "attribute.h"
 #include "method.h"
 
+#include <memory>
+
+class QString;
+
 namespace atuml {
 
 namespace uml {
+
+class Attribute;
+class Method;
 
 /**
  * This class represents an uml class. A uml class consists of
  * attributes, methods and some additional values like abstractness or
  * activity.
  */
-class Class: public QObject {
-Q_OBJECT
+class Class {
 
 public:
 	/**
@@ -37,12 +41,7 @@ public:
 	 *
 	 * @param name The name of the new class.
 	 */
-	Class(const QString name);
-
-	/**
-	 * Virtual class destructor for subclasses.
-	 */
-	virtual ~Class();
+    explicit Class(const QString name);
 
 	/**
 	 * Adds a new method to the class.
@@ -144,30 +143,8 @@ public:
 	bool active() const;
 
 private:
-	/**
-	 * The name of the class.
-	 */
-	QString fName;
-
-	/**
-	 * The abstractness property of the class.
-	 */
-	bool fAbstract;
-
-	/**
-	 * The activity property of the class.
-	 */
-	bool fActive;
-
-	/**
-	 * The list of attributes for the class.
-	 */
-	QList<Attribute> fAttributes;
-
-	/**
-	 * The list of methods for the class.
-	 */
-	QList<Method> fMethods;
+    struct Pimpl;
+    std::shared_ptr<Pimpl> impl_;
 };
 
 }

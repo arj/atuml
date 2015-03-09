@@ -24,6 +24,8 @@ enum class Visibility {
     PACKAGE
 };
 
+QString visibilityToString(const Visibility &v);
+
 /**
  * @brief makeVisibility creates a Visibility value from the UML string symbols "+#-~".
  * @param code The string describing the symbol.
