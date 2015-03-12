@@ -30,7 +30,8 @@ HEADERS += src/ui/graphicsitem/basicitem.h \
     src/uml/helpers/classdiagramprinter.h \
     src/atuml.h \
     src/atumlsettingsprovider.h \
-    src/uml/umldiagram.h
+    src/uml/umldiagram.h \
+    src/aux.h
 SOURCES += src/ui/graphicsitem/basicitem.cpp \
     src/ui/advancedgraphicsccene.cpp \
     src/globals.cpp \
