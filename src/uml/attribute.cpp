@@ -18,6 +18,7 @@
 
 #include <memory>
 
+#include "../aux.h"
 #include "visibility.h"
 #include "multiplicity.h"
 #include "../exceptions.h"
@@ -27,6 +28,7 @@ namespace atuml {
 namespace uml {
 
 struct Attribute::Pimpl {
+
     /**
      * Name of the class. Must not be empty!
      */
@@ -64,7 +66,11 @@ struct Attribute::Pimpl {
     QStringList properties;
 };
 
-Attribute::Attribute(const QString name) : impl_(std::make_shared<Pimpl>()) {
+std::unique_ptr<Attribute::Pimpl> Attribute::cloneImpl() const {
+    return std::make_unique<Attribute::Pimpl>(*this->impl_);
+}
+
+Attribute::Attribute(const QString name) : impl_(std::make_unique<Pimpl>()) {
 
     if (name.isEmpty()) {
         throw atuml::InvalidParameterException(qApp->translate("Exception",
@@ -74,6 +80,22 @@ Attribute::Attribute(const QString name) : impl_(std::make_shared<Pimpl>()) {
     impl_->name = name;
     impl_->visibility = Visibility::PUBLIC;
 }
+
+Attribute::Attribute(const Attribute &src)
+{
+    this->impl_ = src.cloneImpl();
+}
+
+Attribute &Attribute::operator =(const Attribute &src)
+{
+    if (this != &src) {
+        this->impl_ = src.cloneImpl();
+    }
+
+    return *this;
+}
+
+Attribute::~Attribute() = default;
 
 void Attribute::setVisibility(Visibility visibility) {
     impl_->visibility = visibility;

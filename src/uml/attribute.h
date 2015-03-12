@@ -40,6 +40,15 @@ public:
 	 */
     explicit Attribute(const QString name);
 
+    Attribute(const Attribute &src);
+    Attribute& operator=(const Attribute &src);
+
+    /**
+     * Default dtor. Implemention in CPP file
+     * because size of pimpl is only available there.
+     */
+    ~Attribute();
+
 	/**
 	 * Setter for visibility.
 	 * Throws InvalidParameterException if parameter is null.
@@ -133,10 +142,11 @@ public:
 	 * @return Returns a non-modifiable list of attribute properties.
 	 */
 	const QStringList properties() const;
-
 private:
     struct Pimpl;
-    std::shared_ptr<Pimpl> impl_;
+    std::unique_ptr<Pimpl> impl_;
+
+    std::unique_ptr<Pimpl> cloneImpl() const;
 };
 
 }
